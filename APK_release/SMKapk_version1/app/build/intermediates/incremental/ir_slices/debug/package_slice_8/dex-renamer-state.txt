@@ -1,4 +1,0 @@
-#Sun Apr 28 23:20:23 EEST 2019
-base.0=C\:\\Users\\Yabko\\AndroidStudioProjects\\SMKapk_version1\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\8
-path.0=classes.dex
-renamed.0=classes.dex
