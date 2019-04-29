@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.signup_activity_layout);
 
         final EditText name = findViewById(R.id.nameSignUpEditText);
         final EditText surname = findViewById(R.id.SurnameSignUpEditText);
@@ -39,8 +39,8 @@ public class SignUp extends AppCompatActivity {
                         newUser.surname = surname.getText().toString();
                         newUser.email = email.getText().toString();
                         newUser.password = password.getText().toString();
-                        MainActivity.users.add(newUser);
-                        Intent i = new Intent(getApplicationContext() , MainActivity.class);
+                        LogIn_Activity.users.add(newUser);
+                        Intent i = new Intent(getApplicationContext() , LogIn_Activity.class);
                         startActivity(i);
                     }
                     else

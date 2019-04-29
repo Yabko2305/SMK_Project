@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainScrollActivity"
+            android:name=".HomePage_Activity"
             android:label="@string/title_activity_main_scroll"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SignUp_Activity" />
+        <activity android:name=".LogIn_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -14,14 +14,14 @@ import android.os.Handler;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
     public static ArrayList<UserClass> users = new ArrayList<UserClass>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login_activity_layout);
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
         Button LogIn = findViewById(R.id.SignUpButton);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 String password = PasswordEditText.getText().toString();
                 if(email.toLowerCase().equals("admin"))
                 {
-                    Intent inte = new Intent(getApplicationContext() , MainScrollActivity.class);
+                    Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
                     inte.putExtra("Number" , -1 );
                     startActivity(inte);
                 }
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     for (UserClass name : users) {
                         if (name.email.equals(email)) {
                             if (name.password.equals(password)) {
-                                Intent inte = new Intent(getApplicationContext(), MainScrollActivity.class);
+                                Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
                                 inte.putExtra("Number" , i);
                                 startActivity(inte);
                                 i = -1;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
            case MotionEvent.ACTION_UP: {
                long clickDuration = System.currentTimeMillis() - startClickTime;
                if (clickDuration < MAX_CLICK_DURATION) {
-                   Intent i = new Intent(getApplicationContext(), SignUp.class);
+                   Intent i = new Intent(getApplicationContext(), SignUp_Activity.class);
                    startActivity(i);
                    return true;
                    //click event has occurred

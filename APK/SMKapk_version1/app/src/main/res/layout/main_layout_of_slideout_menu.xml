@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_main_scroll"
+        layout="@layout/main_toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -19,8 +19,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main_scroll"
-        app:menu="@menu/activity_main_scroll_drawer" >
+        app:headerLayout="@layout/slideout_background_layout"
+        app:menu="@menu/slide_buttons_menu" >
 
         <RelativeLayout
             android:layout_width="match_parent"

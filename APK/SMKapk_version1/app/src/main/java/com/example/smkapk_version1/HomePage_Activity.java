@@ -2,9 +2,6 @@ package com.example.smkapk_version1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -14,16 +11,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainScrollActivity extends AppCompatActivity
+public class HomePage_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_scroll);
+        setContentView(R.layout.main_layout_of_slideout_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -35,7 +31,7 @@ public class MainScrollActivity extends AppCompatActivity
         Intent pastIntent = getIntent();
         int num = pastIntent.getIntExtra("Number", -10);
         if (num != -1) {
-            nameview.setText(MainActivity.users.get(num).name + " " + MainActivity.users.get(num).surname);
+            nameview.setText(LogIn_Activity.users.get(num).name + " " + LogIn_Activity.users.get(num).surname);
 
         } else {
             nameview.setText("Yaroslav" + " " + "Zhyhailo");
@@ -65,7 +61,7 @@ public class MainScrollActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_scroll, menu);
+
         return true;
     }
 

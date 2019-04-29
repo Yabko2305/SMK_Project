@@ -7,7 +7,7 @@
     android:background="@drawable/gradient"
     android:filterTouchesWhenObscured="false"
     android:textAlignment="center"
-    tools:context=".MainActivity" >
+    tools:context=".LogIn_Activity" >
 
     <EditText
         android:id="@+id/EmailEditText"
