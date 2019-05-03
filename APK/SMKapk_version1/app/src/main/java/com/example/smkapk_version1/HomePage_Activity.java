@@ -31,11 +31,9 @@ public class HomePage_Activity extends AppCompatActivity
         Intent pastIntent = getIntent();
         int num = pastIntent.getIntExtra("Number", -1);
         if (num != -1) {
-            nameview.setText(LogIn_Activity.users.get(num).name + " " + LogIn_Activity.users.get(num).surname);
-
+            nameview.setText("NotAdmin"+"NotAdmin");
         } else {
             nameview.setText("Yaroslav" + " " + "Zhyhailo");
-
         }
 
 

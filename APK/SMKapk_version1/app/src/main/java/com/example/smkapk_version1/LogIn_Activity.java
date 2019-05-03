@@ -1,6 +1,7 @@
 package com.example.smkapk_version1;
 
 /*import android.content.Intent;*/
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,17 +12,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Handler;
 
+import com.example.smkapk_version1.MyRes.Data;
+import com.example.smkapk_version1.MyRes.DataBase;
+import com.example.smkapk_version1.MyRes.DataDao;
+
 import java.util.ArrayList;
 
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
-    public static ArrayList<UserClass> users = new ArrayList<UserClass>();
-
+    public static LogIn_Activity instance;
+    private DataBase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity_layout);
+
+        //----------
+        instance = this;
+        database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
+        //----------
+
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
         Button LogIn = findViewById(R.id.SignUpButton);
@@ -29,43 +40,39 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         final EditText PasswordEditText = findViewById(R.id.PasswordEditText);
         final TextView WrongArguments = findViewById(R.id.WrongArguments);
         WrongArguments.setVisibility(View.INVISIBLE);
+
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = EmailEditText.getText().toString();
                 String password = PasswordEditText.getText().toString();
-                if(email.toLowerCase().equals("admin"))
-                {
+
+                if(email.toLowerCase().equals("admin")) {
                     Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
                     inte.putExtra("Number" , -1 );
                     startActivity(inte);
-                }
-                else {
+                } else {
                     int i = 0;
-                    for (UserClass name : users) {
-                        if (name.email.equals(email)) {
-                            if (name.password.equals(password)) {
+                    //----------
+                    DataDao dataDao = database.dataDao();
+                    Data d = dataDao.getByMail(email);
+                    //----------
+                        if (d != null && d.getPass().length()>0) {
+                            if (d.getPass().equals(password)) {
                                 Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
                                 inte.putExtra("Number" , i);
                                 startActivity(inte);
                                 i = -1;
-                                break;
                             }
                         }
-                        i++;
-                    }
-                    if(i!= -1)
-                    {
-
-                            WrongArguments.setVisibility(View.VISIBLE);
+                    if(i!= -1) {
+                        WrongArguments.setVisibility(View.VISIBLE);
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
                                 WrongArguments.setVisibility(View.INVISIBLE);
                             }
                         }, 2000);
-
-
                     }
                 }
             }
@@ -97,6 +104,13 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
 
    }
 
+    public static LogIn_Activity getInstance() {
+        return instance;
+    }
+
+    public DataBase getDatabase() {
+        return database;
+    }
 }
 
 /* <Button
