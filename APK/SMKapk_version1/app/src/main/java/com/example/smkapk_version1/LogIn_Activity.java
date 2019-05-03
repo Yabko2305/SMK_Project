@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
+    public static String currentName, currentSurname;
     public static LogIn_Activity instance;
     private DataBase database;
 
@@ -44,6 +45,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int i = 0;
                 String email = EmailEditText.getText().toString();
                 String password = PasswordEditText.getText().toString();
 
@@ -51,29 +53,31 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
                     Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
                     inte.putExtra("Number" , -1 );
                     startActivity(inte);
-                } else {
-                    int i = 0;
+                } else if(email.length()>0 && password.length()>0) {
                     //----------
                     DataDao dataDao = database.dataDao();
                     Data d = dataDao.getByMail(email);
                     //----------
-                        if (d != null && d.getPass().length()>0) {
-                            if (d.getPass().equals(password)) {
-                                Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
-                                inte.putExtra("Number" , i);
-                                startActivity(inte);
-                                i = -1;
-                            }
+                    if (d != null && d.getPass().length() > 0) {
+                        if (d.getPass().equals(password)) {
+                            currentName = d.getFName();
+                            currentSurname = d.getSName();
+
+                            Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
+                            inte.putExtra("Number", i);
+                            startActivity(inte);
+                            i = -1;
                         }
-                    if(i!= -1) {
-                        WrongArguments.setVisibility(View.VISIBLE);
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            public void run() {
-                                WrongArguments.setVisibility(View.INVISIBLE);
-                            }
-                        }, 2000);
                     }
+                }
+                if(i!= -1) {
+                    WrongArguments.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            WrongArguments.setVisibility(View.INVISIBLE);
+                        }
+                    }, 2000);
                 }
             }
         });

@@ -26,12 +26,10 @@ public class HomePage_Activity extends AppCompatActivity
 
         TextView nameview = findViewById(R.id.NameShowScrollActivity);
 
-
-
         Intent pastIntent = getIntent();
         int num = pastIntent.getIntExtra("Number", -1);
         if (num != -1) {
-            nameview.setText("NotAdmin"+"NotAdmin");
+            nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);
         } else {
             nameview.setText("Yaroslav" + " " + "Zhyhailo");
         }
