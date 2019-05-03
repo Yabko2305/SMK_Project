@@ -50,6 +50,8 @@ public class SignUp_Activity extends AppCompatActivity {
                     Data d = new Data();
                     d.setEMail(email.getText().toString());
                     d.setPass(password.getText().toString());
+                    d.setFName(name.getText().toString());
+                    d.setSName(surname.getText().toString());
                     dataDao.insert(d);
                     //----------
 
@@ -76,6 +78,7 @@ public class SignUp_Activity extends AppCompatActivity {
             }
         });
     }
+
     public static SignUp_Activity getInstance() {
         return instance;
     }
