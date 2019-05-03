@@ -1,1 +1,2 @@
 30.04 Added new activity "Settings", tested scrollview, fixed crushing bugs of HomePage Activity
+03.05 Fixed bugs in homepage , added images to settings menu

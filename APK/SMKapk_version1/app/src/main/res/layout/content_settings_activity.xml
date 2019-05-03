@@ -9,20 +9,179 @@
     tools:showIn="@layout/settings_toolbar_layout">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_height="800dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="405dp"
-            android:layout_height="2416dp"
+        <ImageView
+            android:id="@+id/usericon1"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="200dp"
             android:layout_marginEnd="8dp"
-            android:text="Згідно з законодавством, інавгурація президента має відбутися протягом 30 днів після оприлюднення офіційних результатів виборів виданнями &quot;Голос України&quot; та &quot;Урядовий кур'єр&quot;.  ЦВК у вівторок передасть відповідні дані цим газетам, однак коли саме вони зможуть опублікувати цю інформацію - невідомо.  День проведення інавгурації більшістю голосів має визначити Верховна Рада України за поданням голови парламенту. На сайті парламенту повідомляється, що наступний пленарний тиждень відбудеться 13 - 17 травня, тому варто очікувати, що саме в ці дні депутати визначаться з цим питанням.  При цьому час інавгурації, список гостей та інші організаційні моменти спікер парламенту Андрій Парубій має узгодити з Володимиром Зеленським.  Керівник передвиборчого штабу Володимира Зеленського Іван Баканов повідомив BBC News Україна, що точну дату проведення інавгурації команда ще буде узгоджувати. &quot;Я думаю, це може бути 30 травня&quot;, - сказав він.  За законодавством, урочисте засідання Верховної Ради, присвячене складенню присяги новообраним президентом, проводиться в сесійному залі парламенту. Захід транслюватимуть у прямому ефірі Національна телекомпанія та інші загальнонаціональні канали.  Порядок проведення інавгурації передбачає, що на початку виконується гімн України, потім голова Верховної Ради повідомляє про присутніх. Після цього голова ЦВК оголошує результати виборів.  Новообраний президент України кладе руку на Конституцію і, за бажанням, на Пересопницьке Євангеліє, та оголошує присягу українському народу, підписує її текст та передає голові Конституційного Суду.  Далі голова КС оголосить про те, що новообраний президент вступив на пост глави держави, а керівник ЦВК вручить пану Зеленському посвідчення президента України.  Новому президенту вручають офіційні символи влади - штандарт, знак президента, гербову печатку та булаву, а сам він з трибуни Верховної Ради має оголосити інавгураційну промову.  З цього моменту Володимир Зеленський офіційно вступить на посаду президента України."
-            android:textAlignment="center"
-            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons1" />
+
+        <ImageView
+            android:id="@+id/usericon2"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons2" />
+
+        <ImageView
+            android:id="@+id/usericon3"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="308dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.972"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons3" />
+
+        <ImageView
+            android:id="@+id/usericon4"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="308dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons4" />
+
+        <ImageView
+            android:id="@+id/usericon5"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginTop="308dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons5" />
+
+        <ImageView
+            android:id="@+id/usericon6"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons6" />
+
+        <ImageView
+            android:id="@+id/usericon7"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.972"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons7" />
+
+        <ImageView
+            android:id="@+id/usericon8"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.972"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons8" />
+
+        <ImageView
+            android:id="@+id/usericon9"
+            android:layout_width="103dp"
+            android:layout_height="93dp"
+
+            android:layout_below="@+id/NameShowScrollActivity"
+            android:layout_alignEnd="@+id/NameShowScrollActivity"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="92dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/usericons9" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="407dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+            android:text="Choose your avatar"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/usericon9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="168dp"
+            android:layout_height="74dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundedbutton"
+            android:text="Set avatar"
+            android:textColor="@android:color/background_light"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.524"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usericon4" />
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>
