@@ -16,7 +16,7 @@ import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
-    public static String currentName, currentSurname;
+    public static String currentName, currentSurname , currentMail;
     public static LogIn_Activity instance;
     private DataBase database;
 
@@ -64,6 +64,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
 
                             currentName = d.getFName();
                             currentSurname = d.getSName();
+                            currentMail = d.getEMail();
 
                             Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
                             inte.putExtra("Number", i);
@@ -101,6 +102,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
             if(load.getEMail() != null && load.getPass() != null){
                 currentName = load.getFName();
                 currentSurname = load.getSName();
+                currentMail = load.getEMail();
                 if(!LogedOut) {
                     Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
                     startActivity(inte);

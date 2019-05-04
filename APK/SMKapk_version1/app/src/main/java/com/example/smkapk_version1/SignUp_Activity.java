@@ -15,7 +15,7 @@ import com.example.smkapk_version1.MyRes.DataDao;
 
 public class SignUp_Activity extends AppCompatActivity {
     public static SignUp_Activity instance;
-    private DataBase database;
+    public DataBase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

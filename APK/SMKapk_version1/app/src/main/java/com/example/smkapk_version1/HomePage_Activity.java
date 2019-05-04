@@ -1,5 +1,6 @@
 package com.example.smkapk_version1;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -10,15 +11,55 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.smkapk_version1.MyRes.Data;
+import com.example.smkapk_version1.MyRes.DataBase;
+import com.example.smkapk_version1.MyRes.DataDao;
 
 public class HomePage_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    ImageView userIcon;
+    //-----
+    public static HomePage_Activity instance;
+    private DataBase database;
+    //-----
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout_of_slideout_menu);
+
+        //----------
+        instance = this;
+        database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
+        DataDao loadDao = database.dataDao();
+        Data d = loadDao.getByMail(LogIn_Activity.currentMail);
+        //----------
+
+        userIcon = (ImageView) findViewById(R.id.MainUserIcon);
+        int choice = d.getPicNum();
+        switch(choice)
+        {
+            case 1: userIcon.setImageResource(R.drawable.usericons1);
+                break;
+            case 2: userIcon.setImageResource(R.drawable.usericons2);
+                break;
+            case 4: userIcon.setImageResource(R.drawable.usericons4);
+                break;
+            case 5: userIcon.setImageResource(R.drawable.usericons5);
+                break;
+            case 6: userIcon.setImageResource(R.drawable.usericons6);
+                break;
+            case 7: userIcon.setImageResource(R.drawable.usericons7);
+                break;
+            case 8: userIcon.setImageResource(R.drawable.usericons8);
+                break;
+            case 9: userIcon.setImageResource(R.drawable.usericons9);
+                break;
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -72,4 +113,15 @@ public class HomePage_Activity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
             return true;
         }
+
+
+    //-----
+    public static HomePage_Activity getInstance() {
+        return instance;
+    }
+
+    public DataBase getDatabase() {
+        return database;
+    }
+    //-----
     }
