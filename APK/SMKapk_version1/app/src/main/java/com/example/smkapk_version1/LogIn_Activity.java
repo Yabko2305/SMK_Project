@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Handler;
@@ -17,6 +18,7 @@ import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
@@ -37,10 +39,22 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
         Button LogIn = findViewById(R.id.SignUpButton);
+        final CheckBox checkBox = findViewById(R.id.checkBox);
         final EditText EmailEditText = findViewById(R.id.EmailEditText);
         final EditText PasswordEditText = findViewById(R.id.PasswordEditText);
         final TextView WrongArguments = findViewById(R.id.WrongArguments);
         WrongArguments.setVisibility(View.INVISIBLE);
+
+        //----------
+        DataDao loadDao = database.dataDao();
+        Data load = loadDao.getByBoolean(true);
+        if(load != null){
+            if(load.getEMail() != null && load.getPass() != null){
+                EmailEditText.setText(load.getEMail());
+                PasswordEditText.setText(load.getPass());
+            }
+        }
+        //----------
 
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +72,16 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
                     DataDao dataDao = database.dataDao();
                     Data d = dataDao.getByMail(email);
                     //----------
-                    if (d != null && d.getPass().length() > 0) {
+                    if (d != null && d.getPass().length() > 0)  {
                         if (d.getPass().equals(password)) {
+                            //Якщо опція запамятати мене вибрана
+                            if(checkBox.isChecked()){
+                                dataDao.changeAllToFalse();
+
+                                d.setRemember(true);
+                                dataDao.update(d);
+                            }
+
                             currentName = d.getFName();
                             currentSurname = d.getSName();
 

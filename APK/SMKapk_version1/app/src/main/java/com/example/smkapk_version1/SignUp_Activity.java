@@ -52,6 +52,7 @@ public class SignUp_Activity extends AppCompatActivity {
                     d.setPass(password.getText().toString());
                     d.setFName(name.getText().toString());
                     d.setSName(surname.getText().toString());
+                    d.setRemember(false);
                     dataDao.insert(d);
                     //----------
 
