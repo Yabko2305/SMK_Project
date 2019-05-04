@@ -36,6 +36,19 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
         //----------
 
+        Intent current = getIntent();
+        boolean LogedOut = current.getBooleanExtra("LogedOut" , false);
+
+        //----------
+        DataDao loadDao = database.dataDao();
+        Data load = loadDao.getByBoolean(true);
+
+        DataDao dataDaoForLog = database.dataDao();
+        if(LogedOut)
+        {
+            dataDaoForLog.changeAllToFalse();
+        }
+
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
         Button LogIn = findViewById(R.id.SignUpButton);
@@ -46,14 +59,15 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         WrongArguments.setVisibility(View.INVISIBLE);
 
         //----------
-        DataDao loadDao = database.dataDao();
-        Data load = loadDao.getByBoolean(true);
+
         if(load != null){
             if(load.getEMail() != null && load.getPass() != null){
                 currentName = load.getFName();
                 currentSurname = load.getSName();
-              Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
-              startActivity(inte);
+                if(!LogedOut) {
+                    Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
+                    startActivity(inte);
+                }
             }
         }
         //----------

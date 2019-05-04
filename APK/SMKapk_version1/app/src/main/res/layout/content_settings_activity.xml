@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id = "@+id/mainScrollview"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Settings_activity"
     tools:showIn="@layout/settings_toolbar_layout">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#b6bbc4"
         android:layout_height="match_parent">
 
         <ImageView
@@ -171,6 +173,35 @@
             app:layout_constraintHorizontal_bias="0.448"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usericon4" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="416dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="660dp"
+            android:layout_marginEnd="8dp"
+            android:background="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/logOut"
+                android:layout_width="391dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Exit"
+                android:textAlignment="textStart"
+                android:textColor="#064dce"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

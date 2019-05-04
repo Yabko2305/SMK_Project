@@ -12,6 +12,7 @@
         <activity
             android:name=".Settings_activity"
             android:label="@string/title_activity_settings_activity"
+            android:noHistory="true"
             android:parentActivityName=".HomePage_Activity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -19,11 +20,14 @@
                 android:value="com.example.smkapk_version1.HomePage_Activity" />
         </activity>
         <activity
+
             android:name=".HomePage_Activity"
             android:label="@string/title_activity_main_scroll"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignUp_Activity" />
-        <activity android:name=".LogIn_Activity">
+        <activity android:name=".SignUp_Activity"
+            android:noHistory="true"/>
+        <activity android:name=".LogIn_Activity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,9 +1,12 @@
 package com.example.smkapk_version1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,14 +17,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+
+import static java.lang.Thread.sleep;
 
 public class Settings_activity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener , View.OnTouchListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_activity);
+
+        TextView Log_Out_Button = (TextView) findViewById(R.id.logOut);
+        Log_Out_Button.setOnTouchListener(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar_settings);
         setSupportActionBar(toolbar);
 
@@ -76,5 +86,36 @@ public class Settings_activity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private static final int MAX_CLICK_DURATION = 200;
+    private long startClickTime;
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                startClickTime = System.currentTimeMillis();
+                break;
+            }
+            case MotionEvent.ACTION_UP: {
+                long clickDuration = System.currentTimeMillis() - startClickTime;
+                if (clickDuration < MAX_CLICK_DURATION) {
+                   final Intent i = new Intent(getApplicationContext(), LogIn_Activity.class);
+                    i.putExtra("LogedOut" , true);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            startActivity(i);
+                        }
+                    }, 50);
+
+                    return true;
+                    //click event has occurred
+                }
+            }
+        }
+        return true;
+
     }
 }
