@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
@@ -45,16 +44,9 @@ public class SignUp_Activity extends AppCompatActivity {
             if(!name.getText().toString().equals("") && !surname.getText().toString().equals("") &&!email.getText().toString().equals("") &&!password.getText().toString().equals("") &&!repeatpassword.getText().toString().equals("")) {
                 if(password.getText().toString().equals(repeatpassword.getText().toString())) {
 
-                    //----------
-                    DataDao dataDao = database.dataDao();
-                    Data d = new Data();
-                    d.setEMail(email.getText().toString());
-                    d.setPass(password.getText().toString());
-                    d.setFName(name.getText().toString());
-                    d.setSName(surname.getText().toString());
-                    d.setRemember(false);
-                    dataDao.insert(d);
-                    //----------
+
+                    setUserDataToDB(email.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());    //New
+
 
                     Intent i = new Intent(getApplicationContext() , LogIn_Activity.class);
                     startActivity(i);
@@ -78,6 +70,20 @@ public class SignUp_Activity extends AppCompatActivity {
             }
             }
         });
+    }
+
+    private void setUserDataToDB(String email, String password, String name, String surname) {
+        DataDao dataDao = database.dataDao();
+        Data d = new Data();
+        d.setEMail(email);
+        d.setPass(password);
+        d.setFName(name);
+        d.setSName(surname);
+
+        d.setPicNum(0);
+        d.setRemember(false);
+
+        dataDao.insert(d);
     }
 
     public static SignUp_Activity getInstance() {

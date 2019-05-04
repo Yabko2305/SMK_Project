@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -25,10 +24,7 @@ public class HomePage_Activity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView nameview = findViewById(R.id.NameShowScrollActivity);
-
-            nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);
-
-
+        nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -52,10 +48,8 @@ public class HomePage_Activity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
         return true;
     }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -70,8 +64,7 @@ public class HomePage_Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_tools)
-        {
+        } else if (id == R.id.nav_tools) {
             Intent inte = new Intent(getApplicationContext() , Settings_activity.class);
             startActivity(inte);
         }

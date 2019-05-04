@@ -1,11 +1,8 @@
 package com.example.smkapk_version1;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +10,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
-
-import static java.lang.Thread.sleep;
 
 public class Settings_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnTouchListener{
@@ -36,6 +30,9 @@ public class Settings_activity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        TextView nameview = findViewById(R.id.NameShowScrollActivity);
+        nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         NavigationView navigationView = findViewById(R.id.nav_view_settings);
@@ -59,11 +56,8 @@ public class Settings_activity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
         return true;
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -82,7 +76,6 @@ public class Settings_activity extends AppCompatActivity
         } else if (id == R.id.nav_tools) {
             //do nothing
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -116,6 +109,5 @@ public class Settings_activity extends AppCompatActivity
             }
         }
         return true;
-
     }
 }

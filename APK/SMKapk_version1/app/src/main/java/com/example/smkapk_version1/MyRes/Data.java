@@ -25,6 +25,8 @@ public class Data {
     @ColumnInfo(name = "rememberMe")
     private boolean remember;
 
+    @ColumnInfo(name = "picNum")
+    private int picNum;
 
     public long getId() { return this.id; }
     public String getFName() { return this.FName; }
@@ -32,6 +34,7 @@ public class Data {
     public String getEMail() { return this.eMail; }
     public String getPass() { return pass; }
     public boolean isRemember() { return this.remember; }
+    public int getPicNum() { return picNum; }
 
     public void setId(long id) { this.id = id; }
     public void setFName(String FName) { this.FName = FName; }
@@ -39,4 +42,5 @@ public class Data {
     public void setEMail(String eMail) { this.eMail = eMail; }
     public void setPass(String pass) { this.pass = pass; }
     public void setRemember(boolean remember) { this.remember = remember; }
+    public void setPicNum(int picNum) { this.picNum = picNum; }
 }

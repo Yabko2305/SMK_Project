@@ -1,6 +1,5 @@
 package com.example.smkapk_version1;
 
-/*import android.content.Intent;*/
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +11,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Handler;
-
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
     public static String currentName, currentSurname;
@@ -36,18 +30,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
         //----------
 
-        Intent current = getIntent();
-        boolean LogedOut = current.getBooleanExtra("LogedOut" , false);
-
-        //----------
-        DataDao loadDao = database.dataDao();
-        Data load = loadDao.getByBoolean(true);
-
-        DataDao dataDaoForLog = database.dataDao();
-        if(LogedOut)
-        {
-            dataDaoForLog.changeAllToFalse();
-        }
+        checkForUserLogined();  //New
 
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
@@ -58,20 +41,6 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         final TextView WrongArguments = findViewById(R.id.WrongArguments);
         WrongArguments.setVisibility(View.INVISIBLE);
 
-        //----------
-
-        if(load != null){
-            if(load.getEMail() != null && load.getPass() != null){
-                currentName = load.getFName();
-                currentSurname = load.getSName();
-                if(!LogedOut) {
-                    Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
-                    startActivity(inte);
-                }
-            }
-        }
-        //----------
-
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,11 +48,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
                 String email = EmailEditText.getText().toString();
                 String password = PasswordEditText.getText().toString();
 
-                if(email.toLowerCase().equals("admin")) {
-                    Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
-                    inte.putExtra("Number" , -1 );
-                    startActivity(inte);
-                } else if(email.length()>0 && password.length()>0) {
+                if(email.length()>0 && password.length()>0) {
                     //----------
                     DataDao dataDao = database.dataDao();
                     Data d = dataDao.getByMail(email);
@@ -93,7 +58,6 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
                             //Якщо опція запамятати мене вибрана
                             if(checkBox.isChecked()){
                                 dataDao.changeAllToFalse();
-
                                 d.setRemember(true);
                                 dataDao.update(d);
                             }
@@ -122,6 +86,29 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
 
 
     }
+
+    private void checkForUserLogined() {
+        Intent current = getIntent();
+        boolean LogedOut = current.getBooleanExtra("LogedOut" , false);
+
+        DataDao loadDao = database.dataDao();
+        if(LogedOut) {
+            loadDao.changeAllToFalse();
+        }
+
+        Data load = loadDao.getByBoolean(true);
+        if(load != null){
+            if(load.getEMail() != null && load.getPass() != null){
+                currentName = load.getFName();
+                currentSurname = load.getSName();
+                if(!LogedOut) {
+                    Intent inte = new Intent(getApplicationContext(), HomePage_Activity.class);
+                    startActivity(inte);
+                }
+            }
+        }
+    }
+
     private static final int MAX_CLICK_DURATION = 200;
     private long startClickTime;
    @Override
