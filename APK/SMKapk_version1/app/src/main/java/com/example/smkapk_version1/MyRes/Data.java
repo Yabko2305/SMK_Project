@@ -22,15 +22,21 @@ public class Data {
     @ColumnInfo(name = "pass")
     private String pass;
 
+    @ColumnInfo(name = "rememberMe")
+    private boolean remember;
+
+
     public long getId() { return this.id; }
     public String getFName() { return this.FName; }
     public String getSName() { return this.SName; }
     public String getEMail() { return this.eMail; }
     public String getPass() { return pass; }
+    public boolean isRemember() { return this.remember; }
 
     public void setId(long id) { this.id = id; }
     public void setFName(String FName) { this.FName = FName; }
     public void setSName(String SName) { this.SName = SName; }
     public void setEMail(String eMail) { this.eMail = eMail; }
     public void setPass(String pass) { this.pass = pass; }
+    public void setRemember(boolean remember) { this.remember = remember; }
 }
