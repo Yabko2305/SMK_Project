@@ -39,7 +39,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
         Button LogIn = findViewById(R.id.SignUpButton);
-        final CheckBox checkBox = findViewById(R.id.checkBox);
+        final CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
         final EditText EmailEditText = findViewById(R.id.EmailEditText);
         final EditText PasswordEditText = findViewById(R.id.PasswordEditText);
         final TextView WrongArguments = findViewById(R.id.WrongArguments);
@@ -50,8 +50,10 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         Data load = loadDao.getByBoolean(true);
         if(load != null){
             if(load.getEMail() != null && load.getPass() != null){
-                EmailEditText.setText(load.getEMail());
-                PasswordEditText.setText(load.getPass());
+                currentName = load.getFName();
+                currentSurname = load.getSName();
+              Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
+              startActivity(inte);
             }
         }
         //----------
