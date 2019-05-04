@@ -1,3 +1,3 @@
 30.04 Added new activity "Settings", tested scrollview, fixed crushing bugs of HomePage Activity
 03.05 Fixed bugs in homepage , added images to settings menu
-04.05 User stays loged in if he pushes the button (exit button will be in settings, not relized yet)
+04.05 User stays loged in if he pushes the checkbox in login activity (exit button will be in settings, not relized yet)
