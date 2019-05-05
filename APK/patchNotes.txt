@@ -2,3 +2,4 @@
 03.05 Fixed bugs in homepage , added images to settings menu
 04.05 User stays loged in if he pushes the checkbox in login activity 
 04.05 Very small beauty changes(divided to functions)
+05.05 Finised(probably) choose icon srttings menu, added new field to DB

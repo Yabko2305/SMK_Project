@@ -28,13 +28,13 @@ public class Data {
     @ColumnInfo(name = "picNum")
     private int picNum;
 
-    public long getId() { return this.id; }
-    public String getFName() { return this.FName; }
-    public String getSName() { return this.SName; }
-    public String getEMail() { return this.eMail; }
-    public String getPass() { return pass; }
-    public boolean isRemember() { return this.remember; }
-    public int getPicNum() { return picNum; }
+    public long     getId() { return this.id; }
+    public String   getFName() { return this.FName; }
+    public String   getSName() { return this.SName; }
+    public String   getEMail() { return this.eMail; }
+    public String   getPass() { return pass; }
+    public boolean  isRemember() { return this.remember; }
+    public int      getPicNum() { return picNum; }
 
     public void setId(long id) { this.id = id; }
     public void setFName(String FName) { this.FName = FName; }
@@ -43,4 +43,11 @@ public class Data {
     public void setPass(String pass) { this.pass = pass; }
     public void setRemember(boolean remember) { this.remember = remember; }
     public void setPicNum(int picNum) { this.picNum = picNum; }
+
+    @ColumnInfo(name = "userPicture")
+    private int userPicture;
+
+    public int getUserPicture() { return this.userPicture;    }
+
+    public void setUserPicture(int userPicture) { this.userPicture = userPicture; }
 }
