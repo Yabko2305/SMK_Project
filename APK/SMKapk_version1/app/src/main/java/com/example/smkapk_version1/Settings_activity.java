@@ -179,7 +179,7 @@ public class Settings_activity extends AppCompatActivity
             Intent inte = new Intent(getApplicationContext() , HomePage_Activity.class);
             inte.putExtra("Number" , -1 );
             startActivity(inte);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_myPills) {
 
         } else if (id == R.id.nav_slideshow) {
 

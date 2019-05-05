@@ -11,7 +11,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.smkapk_version1.MyRes.Data;
@@ -40,25 +45,7 @@ public class HomePage_Activity extends AppCompatActivity
 
         userIcon = (ImageView) findViewById(R.id.MainUserIcon);
         int choice = d.getPicNum();
-        switch(choice)
-        {
-            case 1: userIcon.setImageResource(R.drawable.usericons1);
-                break;
-            case 2: userIcon.setImageResource(R.drawable.usericons2);
-                break;
-            case 4: userIcon.setImageResource(R.drawable.usericons4);
-                break;
-            case 5: userIcon.setImageResource(R.drawable.usericons5);
-                break;
-            case 6: userIcon.setImageResource(R.drawable.usericons6);
-                break;
-            case 7: userIcon.setImageResource(R.drawable.usericons7);
-                break;
-            case 8: userIcon.setImageResource(R.drawable.usericons8);
-                break;
-            case 9: userIcon.setImageResource(R.drawable.usericons9);
-                break;
-        }
+        updatePicture(choice);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -99,9 +86,8 @@ public class HomePage_Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent home = new Intent(getApplicationContext() , HomePage_Activity.class);
-            startActivity(home);
-        } else if (id == R.id.nav_gallery) {
+            //Do nothing
+        } else if (id == R.id.nav_myPills) {
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -109,11 +95,32 @@ public class HomePage_Activity extends AppCompatActivity
             Intent inte = new Intent(getApplicationContext() , Settings_activity.class);
             startActivity(inte);
         }
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
-        }
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void updatePicture(int isSelected) {
+        switch(isSelected) {
+            case 1: userIcon.setImageResource(R.drawable.usericons1);
+                break;
+            case 2: userIcon.setImageResource(R.drawable.usericons2);
+                break;
+            case 4: userIcon.setImageResource(R.drawable.usericons4);
+                break;
+            case 5: userIcon.setImageResource(R.drawable.usericons5);
+                break;
+            case 6: userIcon.setImageResource(R.drawable.usericons6);
+                break;
+            case 7: userIcon.setImageResource(R.drawable.usericons7);
+                break;
+            case 8: userIcon.setImageResource(R.drawable.usericons8);
+                break;
+            case 9: userIcon.setImageResource(R.drawable.usericons9);
+                break;
+        }
+    }
 
     //-----
     public static HomePage_Activity getInstance() {

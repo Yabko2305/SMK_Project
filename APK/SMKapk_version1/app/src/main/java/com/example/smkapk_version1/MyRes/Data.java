@@ -48,6 +48,47 @@ public class Data {
     private int userPicture;
 
     public int getUserPicture() { return this.userPicture;    }
-
     public void setUserPicture(int userPicture) { this.userPicture = userPicture; }
+
+    @ColumnInfo(name = "pillName1")
+    int pillName1;
+    @ColumnInfo(name = "pillCount1")
+    int pillCount1;
+    @ColumnInfo(name = "pillInputDate1")
+    int pillInputDate1;
+
+    @ColumnInfo(name = "pillName2")
+    int pillName2;
+    @ColumnInfo(name = "pillCount2")
+    int pillCount2;
+    @ColumnInfo(name = "pillInputDate2")
+    int pillInputDate2;
+
+    @ColumnInfo(name = "pillName3")
+    int pillName3;
+    @ColumnInfo(name = "pillCount3")
+    int pillCount3;
+    @ColumnInfo(name = "pillInputDate3")
+    int pillInputDate3;
+
+    @ColumnInfo(name = "pillName4")
+    int pillName4;
+    @ColumnInfo(name = "pillCount4")
+    int pillCount4;
+    @ColumnInfo(name = "pillInputDate4")
+    int pillInputDate4;
+
+    @ColumnInfo(name = "pillName5")
+    int pillName5;
+    @ColumnInfo(name = "pillCount5")
+    int pillCount5;
+    @ColumnInfo(name = "pillInputDate5")
+    int pillInputDate5;
+
+    @ColumnInfo(name = "pillName6")
+    int pillName6;
+    @ColumnInfo(name = "pillCount6")
+    int pillCount6;
+    @ColumnInfo(name = "pillInputDate6")
+    int pillInputDate6;
 }
