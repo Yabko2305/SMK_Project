@@ -23,6 +23,7 @@
 
             android:name=".HomePage_Activity"
             android:label="@string/title_activity_main_scroll"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SignUp_Activity"
             android:noHistory="true"/>

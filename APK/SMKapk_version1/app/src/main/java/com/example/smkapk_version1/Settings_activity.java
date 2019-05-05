@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.smkapk_version1.MyRes.Data;
@@ -30,7 +32,10 @@ public class Settings_activity extends AppCompatActivity
     ImageView image1, image2, image4, image5, image6, image7, image8, image9, userIcon;
     TextView applyImageChange;
     TextView cancelImageChange;
+    Button changeUserImageButton;
+    ConstraintLayout changeUserImageLayout , mainConstraintOfSettings;
     Data d;
+    boolean ChangeLayoutIsOpened = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +53,33 @@ public class Settings_activity extends AppCompatActivity
         image7 = (ImageView) findViewById(R.id.usericon7);
         image8 = (ImageView) findViewById(R.id.usericon8);
         image9 = (ImageView) findViewById(R.id.usericon9);
-        userIcon = (ImageView) findViewById(R.id.SettUserIcon);
+
         //3d is deleted
+
+        changeUserImageButton = (Button) findViewById(R.id.ChangeUserImageButton);
+        changeUserImageLayout = (ConstraintLayout) findViewById(R.id.changeUserImageLayout);
+        mainConstraintOfSettings = (ConstraintLayout) findViewById(R.id.mainConstraintOfSettings);
+        mainConstraintOfSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened)
+                {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+            }
+        });
+
+        changeUserImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!ChangeLayoutIsOpened)
+                {
+                    ChangeLayoutIsOpened = true;
+                    changeUserImageLayout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         selectors();
 
@@ -69,6 +99,9 @@ public class Settings_activity extends AppCompatActivity
                 updatePicture(isSelected);
                 if(picToRemove != null)
                     picToRemove.setBackgroundColor(getResources().getColor(android.R.color.white));
+
+                changeUserImageLayout.setVisibility(View.GONE);
+                ChangeLayoutIsOpened = false;
             }
         });
 
@@ -81,8 +114,33 @@ public class Settings_activity extends AppCompatActivity
                 isSelected = -1;
                 if(picToRemove != null)
                     picToRemove.setBackgroundColor(getResources().getColor(android.R.color.white));
+
+                changeUserImageLayout.setVisibility(View.GONE);
+                ChangeLayoutIsOpened = false;
             }
         });
+
+        userIcon = (ImageView) findViewById(R.id.SetupUserIcon);
+        int choice = d.getPicNum();
+        switch(choice)
+        {
+            case 1: userIcon.setImageResource(R.drawable.usericons1);
+                break;
+            case 2: userIcon.setImageResource(R.drawable.usericons2);
+                break;
+            case 4: userIcon.setImageResource(R.drawable.usericons4);
+                break;
+            case 5: userIcon.setImageResource(R.drawable.usericons5);
+                break;
+            case 6: userIcon.setImageResource(R.drawable.usericons6);
+                break;
+            case 7: userIcon.setImageResource(R.drawable.usericons7);
+                break;
+            case 8: userIcon.setImageResource(R.drawable.usericons8);
+                break;
+            case 9: userIcon.setImageResource(R.drawable.usericons9);
+                break;
+        }
 
         TextView Log_Out_Button = (TextView) findViewById(R.id.logOut);
         Log_Out_Button.setOnTouchListener(this);
@@ -106,11 +164,22 @@ public class Settings_activity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(!ChangeLayoutIsOpened)
+            {
+               Intent i = new Intent(getApplicationContext() , HomePage_Activity.class);
+               startActivity(i);
+               overridePendingTransition(R.xml.enter_animation, R.xml.exit_animation);
+            }
+            else
+            {
+                changeUserImageLayout.setVisibility(View.GONE);
+                ChangeLayoutIsOpened = false;
+            }
         }
     }
 
@@ -146,29 +215,37 @@ public class Settings_activity extends AppCompatActivity
     private long startClickTime;
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: {
-                startClickTime = System.currentTimeMillis();
-                break;
-            }
-            case MotionEvent.ACTION_UP: {
-                long clickDuration = System.currentTimeMillis() - startClickTime;
-                if (clickDuration < MAX_CLICK_DURATION) {
-                    final Intent i = new Intent(getApplicationContext(), LogIn_Activity.class);
-                    i.putExtra("LogedOut" , true);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            startActivity(i);
-                        }
-                    }, 50);
+        if(!ChangeLayoutIsOpened) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN: {
+                    startClickTime = System.currentTimeMillis();
+                    break;
+                }
+                case MotionEvent.ACTION_UP: {
+                    long clickDuration = System.currentTimeMillis() - startClickTime;
+                    if (clickDuration < MAX_CLICK_DURATION) {
+                        final Intent i = new Intent(getApplicationContext(), LogIn_Activity.class);
+                        i.putExtra("LogedOut", true);
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                startActivity(i);
+                            }
+                        }, 50);
 
-                    return true;
-                    //click event has occurred
+                        return true;
+                        //click event has occurred
+                    }
                 }
             }
         }
-        return true;
+        else
+        {
+            changeUserImageLayout.setVisibility(View.GONE);
+            ChangeLayoutIsOpened = false;
+        }
+            return true;
+
     }
 
     public void selectors() {
