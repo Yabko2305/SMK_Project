@@ -62,8 +62,7 @@ public class Settings_activity extends AppCompatActivity
         mainConstraintOfSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ChangeLayoutIsOpened)
-                {
+                if(ChangeLayoutIsOpened) {
                     changeUserImageLayout.setVisibility(View.GONE);
                     ChangeLayoutIsOpened = false;
                 }
@@ -73,8 +72,7 @@ public class Settings_activity extends AppCompatActivity
         changeUserImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ChangeLayoutIsOpened)
-                {
+                if(!ChangeLayoutIsOpened) {
                     ChangeLayoutIsOpened = true;
                     changeUserImageLayout.setVisibility(View.VISIBLE);
                 }
@@ -122,25 +120,7 @@ public class Settings_activity extends AppCompatActivity
 
         userIcon = (ImageView) findViewById(R.id.SetupUserIcon);
         int choice = d.getPicNum();
-        switch(choice)
-        {
-            case 1: userIcon.setImageResource(R.drawable.usericons1);
-                break;
-            case 2: userIcon.setImageResource(R.drawable.usericons2);
-                break;
-            case 4: userIcon.setImageResource(R.drawable.usericons4);
-                break;
-            case 5: userIcon.setImageResource(R.drawable.usericons5);
-                break;
-            case 6: userIcon.setImageResource(R.drawable.usericons6);
-                break;
-            case 7: userIcon.setImageResource(R.drawable.usericons7);
-                break;
-            case 8: userIcon.setImageResource(R.drawable.usericons8);
-                break;
-            case 9: userIcon.setImageResource(R.drawable.usericons9);
-                break;
-        }
+        updatePicture(choice);
 
         TextView Log_Out_Button = (TextView) findViewById(R.id.logOut);
         Log_Out_Button.setOnTouchListener(this);
