@@ -5,9 +5,10 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Data.class}, version = 1)
+@Database(entities = {Data.class, Pill.class}, version = 1)
 public abstract class DataBase extends RoomDatabase {
     public abstract DataDao dataDao();
+    public abstract PillDao pillDao();
 
     public static volatile DataBase INSTANCE;
 

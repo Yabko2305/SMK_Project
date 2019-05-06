@@ -21,21 +21,26 @@ import android.widget.TextView;
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.MyRes.Pill;
+import com.example.smkapk_version1.MyRes.PillDao;
 
 public class Settings_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnTouchListener{
 
-    public static Settings_activity instance;
-    private DataBase database;
-
-    int isSelected = -1;
     ImageView image1, image2, image4, image5, image6, image7, image8, image9, userIcon;
-    TextView applyImageChange;
-    TextView cancelImageChange;
-    Button changeUserImageButton;
     ConstraintLayout changeUserImageLayout , mainConstraintOfSettings;
+    TextView applyImageChange, cancelImageChange;
+    Button changeUserImageButton;
+    ImageView picToRemove;
     Data d;
+
+    public static Settings_activity instance;
     boolean ChangeLayoutIsOpened = false;
+    private DataBase database;
+    int isSelected = -1;
+
+    private static final int MAX_CLICK_DURATION = 200;
+    private long startClickTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +59,10 @@ public class Settings_activity extends AppCompatActivity
         image8 = (ImageView) findViewById(R.id.usericon8);
         image9 = (ImageView) findViewById(R.id.usericon9);
 
-        //3d is deleted
-
         changeUserImageButton = (Button) findViewById(R.id.ChangeUserImageButton);
         changeUserImageLayout = (ConstraintLayout) findViewById(R.id.changeUserImageLayout);
         mainConstraintOfSettings = (ConstraintLayout) findViewById(R.id.mainConstraintOfSettings);
+
         mainConstraintOfSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +83,8 @@ public class Settings_activity extends AppCompatActivity
             }
         });
 
-        selectors();
+        //previous selectors()
+        additionalListeners();
 
         //----------
         instance = this;
@@ -131,7 +136,13 @@ public class Settings_activity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView nameview = findViewById(R.id.NameShowScrollActivity);
-        nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);
+        //nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);       //It is right! remove comment
+
+        //==========
+        PillDao pillDao = database.pillDao();                                   // <-- Remove all !
+        Pill p = pillDao.getById(1);                                            // <-- Remove all !
+        nameview.setText(p.pillName+" "+p.pillCount+" "+p.pillInputDate);       // <-- Remove all !
+        //==========
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         NavigationView navigationView = findViewById(R.id.nav_view_settings);
@@ -144,19 +155,16 @@ public class Settings_activity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if(!ChangeLayoutIsOpened)
-            {
+            if(!ChangeLayoutIsOpened) {
                Intent i = new Intent(getApplicationContext() , HomePage_Activity.class);
                startActivity(i);
                overridePendingTransition(R.xml.enter_animation, R.xml.exit_animation);
             }
-            else
-            {
+            else {
                 changeUserImageLayout.setVisibility(View.GONE);
                 ChangeLayoutIsOpened = false;
             }
@@ -169,7 +177,6 @@ public class Settings_activity extends AppCompatActivity
         return true;
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -184,15 +191,13 @@ public class Settings_activity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {
-            //do nothing
+
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private static final int MAX_CLICK_DURATION = 200;
-    private long startClickTime;
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if(!ChangeLayoutIsOpened) {
@@ -228,66 +233,65 @@ public class Settings_activity extends AppCompatActivity
 
     }
 
-    public void selectors() {
+    public void additionalListeners() {
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image1, 1);
+                selectThisPictureAnimations(image1, 1);
             }
         });
 
         image2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image2, 2);
+                selectThisPictureAnimations(image2, 2);
             }
         });
 
         image4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image4, 4);
+                selectThisPictureAnimations(image4, 4);
             }
         });
 
         image5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image5, 5);
+                selectThisPictureAnimations(image5, 5);
             }
         });
 
         image6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image6, 6);
+                selectThisPictureAnimations(image6, 6);
             }
         });
 
         image7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image7, 7);
+                selectThisPictureAnimations(image7, 7);
             }
         });
 
         image8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image8, 8);
+                selectThisPictureAnimations(image8, 8);
             }
         });
 
         image9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectThisPictureAnimatoins(image9, 9);
+                selectThisPictureAnimations(image9, 9);
             }
         });
     }
 
-    ImageView picToRemove;
-    public void selectThisPictureAnimatoins(ImageView thisImage, int thisNum){
+    public void selectThisPictureAnimations(ImageView thisImage, int thisNum){
         if(isSelected != thisNum) {
             thisImage.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
 

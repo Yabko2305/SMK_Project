@@ -14,11 +14,16 @@ import android.os.Handler;
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.MyRes.Pill;
+import com.example.smkapk_version1.MyRes.PillDao;
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
     public static String currentName, currentSurname , currentMail;
     public static LogIn_Activity instance;
     private DataBase database;
+
+    private static final int MAX_CLICK_DURATION = 200;
+    private long startClickTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
         //----------
 
-        checkForUserLogined();  //New
+        checkForUserLogined();
 
         TextView SignInTextView = findViewById(R.id.SingUpTextView);
         SignInTextView.setOnTouchListener(this);
@@ -51,11 +56,18 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
                 if(email.length()>0 && password.length()>0) {
                     //----------
                     DataDao dataDao = database.dataDao();
+                    //==========
+                    PillDao pillDao = database.pillDao();   // <-- Remove all !
+                    Pill p = new Pill();                    // <-- Remove all !
+                    p.pillName = "Aspirin";                 // <-- Remove all !
+                    p.pillCount = 10;                       // <-- Remove all !
+                    p.pillInputDate = "11.03.2019";         // <-- Remove all !
+                    pillDao.insert(p);
+                    //==========
                     Data d = dataDao.getByMail(email);
                     //----------
                     if (d != null && d.getPass().length() > 0)  {
                         if (d.getPass().equals(password)) {
-                            //Якщо опція запамятати мене вибрана
                             if(checkBox.isChecked()){
                                 dataDao.changeAllToFalse();
                                 d.setRemember(true);
@@ -111,8 +123,6 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         }
     }
 
-    private static final int MAX_CLICK_DURATION = 200;
-    private long startClickTime;
    @Override
     public boolean onTouch(View v, MotionEvent event) {
 
@@ -143,19 +153,3 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
         return database;
     }
 }
-
-/* <Button
-        android:id="@+id/button2"
-        android:layout_width="347dp"
-        android:layout_height="631dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/rounded_background"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />*/

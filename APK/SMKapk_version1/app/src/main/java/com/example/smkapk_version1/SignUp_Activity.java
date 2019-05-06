@@ -44,9 +44,7 @@ public class SignUp_Activity extends AppCompatActivity {
             if(!name.getText().toString().equals("") && !surname.getText().toString().equals("") &&!email.getText().toString().equals("") &&!password.getText().toString().equals("") &&!repeatpassword.getText().toString().equals("")) {
                 if(password.getText().toString().equals(repeatpassword.getText().toString())) {
 
-
-                    setUserDataToDB(email.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());    //New
-
+                    setUserDataToDB(email.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString());
 
                     Intent i = new Intent(getApplicationContext() , LogIn_Activity.class);
                     startActivity(i);

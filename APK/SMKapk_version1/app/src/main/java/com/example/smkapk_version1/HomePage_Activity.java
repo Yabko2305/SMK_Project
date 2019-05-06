@@ -26,10 +26,9 @@ import com.example.smkapk_version1.MyRes.DataDao;
 public class HomePage_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ImageView userIcon;
-    //-----
+
     public static HomePage_Activity instance;
     private DataBase database;
-    //-----
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,14 +78,12 @@ public class HomePage_Activity extends AppCompatActivity
         return true;
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            //Do nothing
+
         } else if (id == R.id.nav_myPills) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -122,7 +119,6 @@ public class HomePage_Activity extends AppCompatActivity
         }
     }
 
-    //-----
     public static HomePage_Activity getInstance() {
         return instance;
     }
@@ -130,5 +126,4 @@ public class HomePage_Activity extends AppCompatActivity
     public DataBase getDatabase() {
         return database;
     }
-    //-----
-    }
+}

@@ -3,3 +3,5 @@
 04.05 User stays loged in if he pushes the checkbox in login activity 
 04.05 Very small beauty changes(divided to functions)
 05.05 Finised(probably) choose icon srttings menu, added new field to DB
+06.05 1)Added new database table "Pills"
+	  2)Small code fix, tests

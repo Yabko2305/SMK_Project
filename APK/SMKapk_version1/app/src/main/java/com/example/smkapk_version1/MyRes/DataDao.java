@@ -19,11 +19,11 @@ public interface DataDao {
     @Update
     void update(Data data);
 
-    @Query("UPDATE Data SET rememberMe = 'false'")
-    void changeAllToFalse();
-
     @Query("SELECT * FROM Data")
     List<Data> getAll();
+
+    @Query("UPDATE Data SET rememberMe = 'false'")
+    void changeAllToFalse();
 
     @Query("SELECT * FROM Data WHERE eMail = :mail")
     Data getByMail(String mail);
