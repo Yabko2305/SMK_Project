@@ -26,5 +26,5 @@ public interface PillDao {
     Pill getById(int id);
 
     @Query("SELECT * FROM Pill WHERE patientMail= :patientMail")
-    Pill getByMail(String patientMail);
+    List<Pill> getByMail(String patientMail);
 }
