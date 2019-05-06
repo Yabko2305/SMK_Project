@@ -13,17 +13,23 @@ public class Pill {
     @ColumnInfo(name = "id")
     public long id;
 
+    @ColumnInfo(name = "patientMail")
+    public String patientMail;
+
     @ColumnInfo(name = "pillName")
     public String pillName;
 
     @ColumnInfo(name = "pillCount")
     public int pillCount;
 
+    @ColumnInfo(name = "placeInKit")
+    public int placeInKit;
+
     @ColumnInfo(name = "pillInputDate")
     public String pillInputDate;
 
-    @ColumnInfo(name = "takeRate")  //Як часто слід вживати
-    public int takeRate;                   //Кожні takeRate годин
+    @ColumnInfo(name = "takeRate")
+    public int takeRate;
 
     @ColumnInfo(name = "lastUse")
     public String lastUse;

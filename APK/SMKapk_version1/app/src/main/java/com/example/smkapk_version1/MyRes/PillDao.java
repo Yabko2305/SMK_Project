@@ -24,4 +24,7 @@ public interface PillDao {
 
     @Query("SELECT * FROM Pill WHERE id= :id")
     Pill getById(int id);
+
+    @Query("SELECT * FROM Pill WHERE patientMail= :patientMail")
+    Pill getByMail(String patientMail);
 }
