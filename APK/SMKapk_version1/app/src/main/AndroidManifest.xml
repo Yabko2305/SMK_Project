@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Change_Email_Activity"></activity>
+        <activity android:name=".Change_Name_Activity" />
+        <activity android:name=".Change_Password_Activity" />
         <activity
             android:name=".Settings_activity"
             android:label="@string/title_activity_settings_activity"

@@ -28,7 +28,7 @@ public class Settings_activity extends AppCompatActivity
     ImageView image1, image2, image4, image5, image6, image7, image8, image9, userIcon;
     ConstraintLayout changeUserImageLayout , mainConstraintOfSettings;
     TextView applyImageChange, cancelImageChange;
-    Button changeUserImageButton;
+    Button changeUserImageButton , changeUserPasswordButton , changeUserNameButton , changeUserEmailButton;
     ImageView picToRemove;
     Data d;
 
@@ -60,7 +60,54 @@ public class Settings_activity extends AppCompatActivity
         changeUserImageButton = (Button) findViewById(R.id.ChangeUserImageButton);
         changeUserImageLayout = (ConstraintLayout) findViewById(R.id.changeUserImageLayout);
         mainConstraintOfSettings = (ConstraintLayout) findViewById(R.id.mainConstraintOfSettings);
+        changeUserPasswordButton = (Button) findViewById(R.id.ChangeUserPasswordButton);
+        changeUserNameButton = (Button) findViewById(R.id.ChangeUserNameButton);
+        changeUserEmailButton = (Button) findViewById(R.id.ChangeUserEmailButton);
 
+        changeUserEmailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened) {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+                else
+                {
+                    Intent inte = new Intent(getApplicationContext() , Change_Email_Activity.class);
+                    startActivity(inte);
+                }
+            }
+        });
+
+        changeUserNameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened) {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+                else
+                {
+                    Intent inte = new Intent(getApplicationContext() , Change_Name_Activity.class);
+                    startActivity(inte);
+                }
+            }
+        });
+
+        changeUserPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened) {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+                else
+                {
+                    Intent inte = new Intent(getApplicationContext() , Change_Password_Activity.class);
+                    startActivity(inte);
+                }
+            }
+        });
 
 
         mainConstraintOfSettings.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +185,7 @@ public class Settings_activity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView nameview = findViewById(R.id.NameShowScrollActivity);
-        nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);       //It is right! remove comment
+        nameview.setText(d.getFName()+" "+d.getSName());       //It is right! remove comment
 
         //==========
         //PillDao pillDao = database.pillDao();                                   // <-- Remove all !
