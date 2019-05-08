@@ -21,8 +21,6 @@ import android.widget.TextView;
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
-import com.example.smkapk_version1.MyRes.Pill;
-import com.example.smkapk_version1.MyRes.PillDao;
 
 public class Settings_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnTouchListener{
@@ -63,6 +61,8 @@ public class Settings_activity extends AppCompatActivity
         changeUserImageLayout = (ConstraintLayout) findViewById(R.id.changeUserImageLayout);
         mainConstraintOfSettings = (ConstraintLayout) findViewById(R.id.mainConstraintOfSettings);
 
+
+
         mainConstraintOfSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +78,8 @@ public class Settings_activity extends AppCompatActivity
             public void onClick(View v) {
                 if(!ChangeLayoutIsOpened) {
                     ChangeLayoutIsOpened = true;
+                    changeUserImageLayout.bringToFront();
+                    changeUserImageLayout.invalidate();
                     changeUserImageLayout.setVisibility(View.VISIBLE);
                 }
             }
@@ -136,12 +138,12 @@ public class Settings_activity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView nameview = findViewById(R.id.NameShowScrollActivity);
-        //nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);       //It is right! remove comment
+        nameview.setText(LogIn_Activity.currentName+" "+LogIn_Activity.currentSurname);       //It is right! remove comment
 
         //==========
-        PillDao pillDao = database.pillDao();                                   // <-- Remove all !
-        Pill p = pillDao.getById(1);                                            // <-- Remove all !
-        nameview.setText(p.pillName+" "+p.pillCount+" "+p.pillInputDate);       // <-- Remove all !
+        //PillDao pillDao = database.pillDao();                                   // <-- Remove all !
+        //Pill p = pillDao.getById(1);                                            // <-- Remove all !
+        //nameview.setText(p.pillName+" "+p.pillCount+" "+p.pillInputDate);       // <-- Remove all !
         //==========
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_settings);

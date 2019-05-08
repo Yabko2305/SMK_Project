@@ -9,26 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".xyz"></activity>
         <activity
             android:name=".Settings_activity"
             android:label="@string/title_activity_settings_activity"
             android:noHistory="true"
             android:parentActivityName=".HomePage_Activity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.smkapk_version1.HomePage_Activity" />
         </activity>
         <activity
-
             android:name=".HomePage_Activity"
             android:label="@string/title_activity_main_scroll"
             android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignUp_Activity"
-            android:noHistory="true"/>
-        <activity android:name=".LogIn_Activity"
-            android:noHistory="true">
+        <activity
+            android:name=".SignUp_Activity"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LogIn_Activity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
