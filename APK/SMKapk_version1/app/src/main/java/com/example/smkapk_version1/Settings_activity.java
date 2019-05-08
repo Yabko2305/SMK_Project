@@ -25,10 +25,11 @@ import com.example.smkapk_version1.MyRes.DataDao;
 public class Settings_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnTouchListener{
 
-    ImageView image1, image2, image4, image5, image6, image7, image8, image9, userIcon;
+    ImageView image1, image2, image4, image5, image6, image7, image8, image9, userIcon , UserIconViewSettingsActivity;
     ConstraintLayout changeUserImageLayout , mainConstraintOfSettings;
-    TextView applyImageChange, cancelImageChange;
-    Button changeUserImageButton , changeUserPasswordButton , changeUserNameButton , changeUserEmailButton;
+    TextView applyImageChange, cancelImageChange, UserName , UserEmail;
+    Button changeUserImageButton , changeUserPasswordButton , changeUserNameButton , changeUserEmailButton ,changeNotificationsSettingsButton,
+            changeSecuritySettingsButton , FaQ_Button;
     ImageView picToRemove;
     Data d;
 
@@ -57,12 +58,66 @@ public class Settings_activity extends AppCompatActivity
         image8 = (ImageView) findViewById(R.id.usericon8);
         image9 = (ImageView) findViewById(R.id.usericon9);
 
+        UserIconViewSettingsActivity = (ImageView) findViewById(R.id.IconViewSettingsLayout);
+
+
         changeUserImageButton = (Button) findViewById(R.id.ChangeUserImageButton);
         changeUserImageLayout = (ConstraintLayout) findViewById(R.id.changeUserImageLayout);
         mainConstraintOfSettings = (ConstraintLayout) findViewById(R.id.mainConstraintOfSettings);
         changeUserPasswordButton = (Button) findViewById(R.id.ChangeUserPasswordButton);
         changeUserNameButton = (Button) findViewById(R.id.ChangeUserNameButton);
         changeUserEmailButton = (Button) findViewById(R.id.ChangeUserEmailButton);
+        changeNotificationsSettingsButton = (Button) findViewById(R.id.changeNotificationsSettingsButton);
+        changeSecuritySettingsButton = (Button) findViewById(R.id.changeSecuritySettingsButton);
+        FaQ_Button = (Button) findViewById(R.id.FaQ_Button);
+
+        UserEmail = (TextView) findViewById(R.id.EmailShowSettingsActivity);
+        UserName = (TextView) findViewById(R.id.NameShowSettingsActivity);
+
+        FaQ_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened) {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+                else
+                {
+                    Intent inte = new Intent(getApplicationContext() , FAQ_Activity.class);
+                    startActivity(inte);
+                }
+            }
+        });
+
+        changeSecuritySettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened) {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+                else
+                {
+                    Intent inte = new Intent(getApplicationContext() , Security_Settings.class);
+                    startActivity(inte);
+                }
+            }
+        });
+
+        changeNotificationsSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ChangeLayoutIsOpened) {
+                    changeUserImageLayout.setVisibility(View.GONE);
+                    ChangeLayoutIsOpened = false;
+                }
+                else
+                {
+                    Intent inte = new Intent(getApplicationContext() , Notifications_Settings.class);
+                    startActivity(inte);
+                }
+            }
+        });
 
         changeUserEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +197,10 @@ public class Settings_activity extends AppCompatActivity
         d = loadDao.getByMail(LogIn_Activity.currentMail);
         //----------
 
+        UserName.setText(d.getFName()+" "+d.getSName());
+        UserEmail.setText(d.getEMail());
+
+
         applyImageChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +208,7 @@ public class Settings_activity extends AppCompatActivity
                 loadDao.update(d);
 
                 updatePicture(isSelected);
+                UserIconViewSettingsActivity.setImageDrawable(userIcon.getDrawable());
                 if(picToRemove != null)
                     picToRemove.setBackgroundColor(getResources().getColor(android.R.color.white));
 
@@ -200,6 +260,9 @@ public class Settings_activity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        updatePicture(d.getPicNum());
+        UserIconViewSettingsActivity.setImageDrawable(userIcon.getDrawable());
     }
 
     @Override
@@ -376,6 +439,7 @@ public class Settings_activity extends AppCompatActivity
                 break;
         }
     }
+
 
     public static Settings_activity getInstance() {
         return instance;
