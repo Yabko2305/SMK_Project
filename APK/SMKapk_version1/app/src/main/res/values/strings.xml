@@ -106,4 +106,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_add__pill_">Add_Pill_Activity</string>
+    <string name="title_activity_pills__main_">Pills_Main_Activity</string>
+    <string name="title_activity_medkit__main">Medkit_MainActivity</string>
 </resources>

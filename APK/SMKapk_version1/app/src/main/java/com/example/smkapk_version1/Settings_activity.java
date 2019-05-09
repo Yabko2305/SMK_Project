@@ -299,8 +299,12 @@ public class Settings_activity extends AppCompatActivity
             inte.putExtra("Number" , -1 );
             startActivity(inte);
         } else if (id == R.id.nav_myPills) {
-
+            Intent inte = new Intent(getApplicationContext() , Pills_Main_Activity.class);
+            startActivity(inte);
         } else if (id == R.id.nav_slideshow) {
+
+            Intent inte = new Intent(getApplicationContext() , Medkit_MainActivity.class);
+            startActivity(inte);
 
         } else if (id == R.id.nav_tools) {
 
