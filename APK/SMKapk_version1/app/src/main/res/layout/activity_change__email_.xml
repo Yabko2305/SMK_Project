@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Change_Email_Activity">
+    tools:context=".Settings.Change_Email_Activity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar2"

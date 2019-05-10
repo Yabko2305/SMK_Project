@@ -19,12 +19,12 @@
             android:label="@string/title_activity_pills__main_"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".FAQ_Activity" />
-        <activity android:name=".Security_Settings" />
-        <activity android:name=".Notifications_Settings" />
-        <activity android:name=".Change_Email_Activity" />
-        <activity android:name=".Change_Name_Activity" />
-        <activity android:name=".Change_Password_Activity" />
+        <activity android:name=".Settings.FAQ_Activity" />
+        <activity android:name=".Settings.Security_Settings" />
+        <activity android:name=".Settings.Notifications_Settings" />
+        <activity android:name=".Settings.Change_Email_Activity" />
+        <activity android:name=".Settings.Change_Name_Activity" />
+        <activity android:name=".Settings.Change_Password_Activity" />
         <activity
             android:name=".Settings_activity"
             android:label="@string/title_activity_settings_activity"

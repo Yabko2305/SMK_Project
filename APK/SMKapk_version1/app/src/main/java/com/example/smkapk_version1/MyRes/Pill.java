@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.MonthDay;
 
 @Entity(tableName = "Pill")
 public class Pill {
@@ -33,4 +34,10 @@ public class Pill {
 
     @ColumnInfo(name = "lastUse")
     public String lastUse = null;
+
+    public String courseLen;
+    public String startDay;
+    public int pillsPerDay;
+    public int pillsTakenToday;
+    public int timeBetweenTakes;
 }

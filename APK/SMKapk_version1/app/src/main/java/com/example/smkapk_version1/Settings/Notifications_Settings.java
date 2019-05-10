@@ -1,8 +1,11 @@
-package com.example.smkapk_version1;
+package com.example.smkapk_version1.Settings;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.smkapk_version1.R;
+import com.example.smkapk_version1.Settings_activity;
 
 public class Notifications_Settings extends AppCompatActivity {
 

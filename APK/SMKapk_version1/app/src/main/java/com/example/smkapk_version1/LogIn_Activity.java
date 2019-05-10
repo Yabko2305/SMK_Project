@@ -63,6 +63,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
                     p.pillCount = 10;                       // <-- Remove all !
                     p.pillInputDate = "11.03.2019";         // <-- Remove all !
                     p.patientMail = email;
+                    p.timeBetweenTakes = 1;
                     pillDao.insert(p);
                     //==========
                     Data d = dataDao.getByMail(email);

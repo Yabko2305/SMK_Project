@@ -1,4 +1,4 @@
-package com.example.smkapk_version1;
+package com.example.smkapk_version1.Settings;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
@@ -11,9 +11,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 
+import com.example.smkapk_version1.LogIn_Activity;
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.R;
+import com.example.smkapk_version1.Settings_activity;
 
 public class Change_Email_Activity extends AppCompatActivity {
 

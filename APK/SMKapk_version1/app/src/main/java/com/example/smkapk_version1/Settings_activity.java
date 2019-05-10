@@ -18,9 +18,16 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.Settings.Change_Email_Activity;
+import com.example.smkapk_version1.Settings.Change_Name_Activity;
+import com.example.smkapk_version1.Settings.Change_Password_Activity;
+import com.example.smkapk_version1.Settings.FAQ_Activity;
+import com.example.smkapk_version1.Settings.Notifications_Settings;
+import com.example.smkapk_version1.Settings.Security_Settings;
 
 public class Settings_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , View.OnTouchListener{
