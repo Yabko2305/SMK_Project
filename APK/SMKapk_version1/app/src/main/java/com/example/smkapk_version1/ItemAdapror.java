@@ -46,14 +46,12 @@ public class ItemAdapror extends BaseAdapter {
         TextView nameTextView = v.findViewById(R.id.PillNameTextView);
         TextView days_taken = v.findViewById(R.id.DaysOfTakePillDetail);
         TextView today_taken = v.findViewById(R.id.TakesOfPillsTodayDetails);
-        TextView descrTextView = v.findViewById(R.id.PillShortDescrTextView);
 
         Pill pill = pills[position];
 
        nameTextView.setText(pill.pillName);
-       descrTextView.setText("add descr here");
-       days_taken.setText("num/num");
-       today_taken.setText("num/"+pill.takeRate);
+       days_taken.setText("5/10");
+       today_taken.setText("2/"+pill.takeRate);
 
 
         return v;
