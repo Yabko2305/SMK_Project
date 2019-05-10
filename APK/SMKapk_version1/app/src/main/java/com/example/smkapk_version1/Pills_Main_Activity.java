@@ -16,11 +16,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.MyRes.Pill;
+import com.example.smkapk_version1.MyRes.PillDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pills_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +34,7 @@ public class Pills_Main_Activity extends AppCompatActivity
     TextView userName;
     ImageView userIcon;
     Data d;
+    ListView myListView;
 
     public static Pills_Main_Activity instance;
     boolean ChangeLayoutIsOpened = false;
@@ -45,6 +52,36 @@ public class Pills_Main_Activity extends AppCompatActivity
         final DataDao loadDao = database.dataDao();
         d = loadDao.getByMail(LogIn_Activity.currentMail);
         //----------
+
+        //DEMO_USAGE OF SHOWING PILLS
+
+       myListView = (ListView) findViewById(R.id.PillsListView);
+        /*PillDao pillDao = database.pillDao();
+        List<Pill> pills = pillDao.getAll();
+        Pill[] Pillarray = new Pill[pills.size()];   //<---- must use this code
+        pills.toArray(Pillarray);*/
+
+        Pill[] Pillarray = new Pill[4];
+        Pillarray[0] = new Pill();
+        Pillarray[1]= new Pill();
+        Pillarray[2] = new Pill();
+        Pillarray[3] = new Pill();
+
+        Pillarray[0].pillName = "Аспірин";
+        Pillarray[1].pillName = "Но-шпа";
+        Pillarray[2].pillName = "Верошпірон";
+        Pillarray[3].pillName = "Активоване Вугілля";
+
+        Pillarray[0].takeRate = 3;
+        Pillarray[1].takeRate = 2;
+        Pillarray[2].takeRate = 5;
+        Pillarray[3].takeRate = 1;
+
+
+       ItemAdapror adaptor = new ItemAdapror(this , Pillarray);
+       myListView.setAdapter(adaptor);
+
+        //REFACTOR THIS CODE */
 
         Toolbar toolbar = findViewById(R.id.toolbar_pills);
         setSupportActionBar(toolbar);

@@ -11,26 +11,26 @@ import java.sql.Time;
 public class Pill {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    public long id;
+    public long id =0;
 
     @ColumnInfo(name = "patientMail")
-    public String patientMail;
+    public String patientMail = null;
 
     @ColumnInfo(name = "pillName")
-    public String pillName;
+    public String pillName = null;
 
     @ColumnInfo(name = "pillCount")
-    public int pillCount;
+    public int pillCount = 0;
 
     @ColumnInfo(name = "placeInKit")
-    public int placeInKit;
+    public int placeInKit = 0;
 
     @ColumnInfo(name = "pillInputDate")
-    public String pillInputDate;
+    public String pillInputDate = null;
 
     @ColumnInfo(name = "takeRate")
-    public int takeRate;
+    public int takeRate = 0;
 
     @ColumnInfo(name = "lastUse")
-    public String lastUse;
+    public String lastUse = null;
 }
