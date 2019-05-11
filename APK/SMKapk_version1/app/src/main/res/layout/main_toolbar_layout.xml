@@ -20,6 +20,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/homepage_layout" />
+    <include
+        layout="@layout/homepage_layout"
+        android:backgroundTint="@color/colorPrimary" />
 
 </android.support.design.widget.CoordinatorLayout>

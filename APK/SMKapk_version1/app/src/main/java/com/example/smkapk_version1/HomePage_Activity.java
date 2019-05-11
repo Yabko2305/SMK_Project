@@ -1,22 +1,35 @@
 package com.example.smkapk_version1;
 
+import android.app.DatePickerDialog;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class HomePage_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +37,10 @@ public class HomePage_Activity extends AppCompatActivity
 
     public static HomePage_Activity instance;
     private DataBase database;
+    private static final String TAG = "HomepageActivity";
+
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +72,65 @@ public class HomePage_Activity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        mDisplayDate = (TextView) findViewById(R.id.dateTextView);
+
+        /*
+            The following snippet is causing a crash
+            when target label is clicked
+            read readme.txt (root project directory) for more info
+         */
+
+//        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Calendar cal = Calendar.getInstance();
+//                int year = cal.get(Calendar.YEAR);
+//                int month = cal.get(Calendar.MONTH);
+//                int day = cal.get(Calendar.DAY_OF_MONTH);
+//
+//                DatePickerDialog dialog = new DatePickerDialog(
+//                        HomePage_Activity.this,
+//                                android.R.style.Widget_Holo_ActionBar_Solid,
+//                                mDateSetListener ,
+//                                year, month, day);
+//            }
+//        });
+//
+//        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+//                Log.d(TAG, "onDateSet: date: " + year + "/" + month + "/" + day);
+//            }
+//        };
+
+
+
+        /*
+            Chart drawing example. Mock data.
+            TODO *  manage animation opts
+                 *  make additional class for chart rendering
+                 *  test different chart samples
+                 *  rewrite homepage_layout.xml
+                 *  make defeat an impossibility in yo mind
+        */
+
+        int[][] mockChartData = new int[][] { { 2, 3}, { 3, 5}, {1, 2}, {1, 1}, {8, 5}, {3, 4}, {3, 4}};
+        LineChart chart = (LineChart) findViewById(R.id.lineChart_test);
+
+        List<Entry> entries = new ArrayList<Entry>();
+
+        for (int[] item : mockChartData){
+            entries.add(new Entry(item[0], item[1]));
+        }
+
+        LineDataSet dataSet = new LineDataSet(entries, "Mock data set, no animation ");
+        dataSet.setColor(Color.parseColor("#ff9767"));
+        dataSet.setValueTextColor(Color.parseColor("#000000"));
+
+        LineData lineData = new LineData(dataSet);
+        chart.setData(lineData);
+        chart.invalidate();
     }
 
     @Override
