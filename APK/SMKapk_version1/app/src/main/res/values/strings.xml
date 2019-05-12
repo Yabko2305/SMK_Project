@@ -8,6 +8,15 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="PillNames">
+        <item>Но-Шпа</item>
+        <item>Аспірин</item>
+        <item>Кларитин</item>
+        <item>Анальгін</item>
+        <item>Сорбекс</item>
+        <item>Супрастин</item>
+    </string-array>
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -17,6 +26,9 @@
     <string name="title_activity_settings_activity">Settings_activity</string>
     <string name="title_activity_test_act">test_act</string>
     <string name="large_text">
+
+
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."

@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class Pills_Main_Activity extends AppCompatActivity
     ImageView userIcon;
     Data d;
     ListView myListView;
+    FloatingActionButton addPill;
 
     public static Pills_Main_Activity instance;
     boolean ChangeLayoutIsOpened = false;
@@ -38,6 +40,16 @@ public class Pills_Main_Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pills__main_);
+
+        addPill = (FloatingActionButton) findViewById(R.id.AddPill_FromPillsMenu_Button);
+
+        addPill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inte = new Intent(getApplicationContext() , Add_Pill_Activity.class);
+                startActivity(inte);
+            }
+        });
 
         //----------
         instance = this;
@@ -78,7 +90,6 @@ public class Pills_Main_Activity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar_pills);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
         userName = (TextView) findViewById(R.id.NameShowScrollActivity_PillMenu);
         userIcon = (ImageView) findViewById(R.id.PillMenuUserIcon);
 
