@@ -3,6 +3,7 @@ package com.example.smkapk_version1.MyRes;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -35,8 +36,8 @@ public class Pill {
     @ColumnInfo(name = "lastUse")
     public String lastUse = null;
 
-    public String courseLen;
-    public String startDay;
+    public int courseLen;
+    public long startDay;
     public int pillsPerDay;
     public int pillsTakenToday;
     public int timeBetweenTakes;
