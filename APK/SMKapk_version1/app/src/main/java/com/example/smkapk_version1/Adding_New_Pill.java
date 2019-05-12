@@ -38,7 +38,7 @@ public class Adding_New_Pill extends AppCompatActivity {
                    //Add pill in database
                     Intent inte = new Intent(getApplicationContext() , Pills_Main_Activity.class);
                     startActivity(inte);
-                    overridePendingTransition(R.xml.enter_animation, R.xml.exit_animation);
+                    overridePendingTransition(R.xml.enter_animation, R.xml.exit_animation);//
                 }
                 else
                 {
