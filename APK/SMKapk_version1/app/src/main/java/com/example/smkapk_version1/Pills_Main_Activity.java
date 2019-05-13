@@ -21,6 +21,9 @@ import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
 import com.example.smkapk_version1.MyRes.Pill;
+import com.example.smkapk_version1.MyRes.PillDao;
+
+import java.util.List;
 
 public class Pills_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -61,26 +64,10 @@ public class Pills_Main_Activity extends AppCompatActivity
         //DEMO_USAGE OF SHOWING PILLS
 
        myListView = (ListView) findViewById(R.id.PillsListView);
-        /*PillDao pillDao = database.pillDao();
+        PillDao pillDao = database.pillDao();
         List<Pill> pills = pillDao.getAll();
         Pill[] Pillarray = new Pill[pills.size()];   //<---- must use this code
-        pills.toArray(Pillarray);*/
-
-        Pill[] Pillarray = new Pill[4];
-        Pillarray[0] = new Pill();
-        Pillarray[1]= new Pill();
-        Pillarray[2] = new Pill();
-        Pillarray[3] = new Pill();
-
-        Pillarray[0].pillName = "Аспірин";
-        Pillarray[1].pillName = "Но-шпа";
-        Pillarray[2].pillName = "Верошпірон";
-        Pillarray[3].pillName = "Активоване Вугілля";
-
-        Pillarray[0].takeRate = 3;
-        Pillarray[1].takeRate = 2;
-        Pillarray[2].takeRate = 5;
-        Pillarray[3].takeRate = 1;
+        pills.toArray(Pillarray);
 
 
        ItemAdapror adaptor = new ItemAdapror(this , Pillarray);

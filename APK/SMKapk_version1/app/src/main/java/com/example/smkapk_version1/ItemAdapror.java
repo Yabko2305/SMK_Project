@@ -12,6 +12,10 @@ import com.example.smkapk_version1.MyRes.Pill;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class ItemAdapror extends BaseAdapter {
 
     LayoutInflater mInflater;
@@ -50,8 +54,24 @@ public class ItemAdapror extends BaseAdapter {
         Pill pill = pills[position];
 
        nameTextView.setText(pill.pillName);
-       days_taken.setText("5/10");
-       today_taken.setText("2/"+pill.takeRate);
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String one = df.format(c);
+       char[] arr1 = new char[2];
+       arr1[0] = one.charAt(one.length()-2);
+       arr1[1] = one.charAt(one.length()-1);
+       one = arr1.toString();
+
+       String two = pill.startDay;
+       arr1[0] = two.charAt(one.length()-2);
+       arr1[1] = two.charAt(one.length()-1);
+       two = arr1.toString();
+       int oneitn = Integer.parseInt(one);
+       int twoint = Integer.parseInt(two);
+       int res = oneitn -twoint;
+
+       days_taken.setText(res+"/"+pill.courseLen);
+       today_taken.setText(pill.pillsTakenToday+"/"+pill.takeRate);
 
 
         return v;

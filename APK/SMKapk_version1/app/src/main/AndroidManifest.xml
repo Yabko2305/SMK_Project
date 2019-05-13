@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Adding_New_Pill"></activity>
-        <activity android:name=".Add_Pill_Activity" />
+        <activity android:name=".Adding_New_Pill"
+            android:noHistory="true"></activity>
+        <activity android:name=".Add_Pill_Activity"
+            android:noHistory="true"/>
         <activity
             android:name=".Medkit_MainActivity"
             android:label="@string/title_activity_medkit__main"
@@ -21,12 +23,12 @@
             android:label="@string/title_activity_pills__main_"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Settings.FAQ_Activity" />
-        <activity android:name=".Settings.Security_Settings" />
-        <activity android:name=".Settings.Notifications_Settings" />
-        <activity android:name=".Settings.Change_Email_Activity" />
-        <activity android:name=".Settings.Change_Name_Activity" />
-        <activity android:name=".Settings.Change_Password_Activity" />
+        <activity android:name=".Settings.FAQ_Activity" android:noHistory="true"/>
+        <activity android:name=".Settings.Security_Settings" android:noHistory="true"/>
+        <activity android:name=".Settings.Notifications_Settings" android:noHistory="true"/>
+        <activity android:name=".Settings.Change_Email_Activity" android:noHistory="true"/>
+        <activity android:name=".Settings.Change_Name_Activity" android:noHistory="true"/>
+        <activity android:name=".Settings.Change_Password_Activity" android:noHistory="true"/>
         <activity
             android:name=".Settings_activity"
             android:label="@string/title_activity_settings_activity"
