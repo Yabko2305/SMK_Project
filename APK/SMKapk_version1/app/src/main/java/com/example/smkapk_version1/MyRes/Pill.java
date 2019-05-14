@@ -13,32 +13,33 @@ import java.time.MonthDay;
 public class Pill {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    public long id =0;
+    public long id;     //Do not init!
 
     @ColumnInfo(name = "patientMail")
-    public String patientMail = null;
+    public String patientMail;
 
     @ColumnInfo(name = "pillName")
-    public String pillName = null;
+    public String pillName;
 
     @ColumnInfo(name = "pillCount")
-    public int pillCount = 0;
+    public int pillCount;
 
     @ColumnInfo(name = "placeInKit")
-    public int placeInKit = 0;
+    public int placeInKit;
 
     @ColumnInfo(name = "pillInputDate")
-    public String pillInputDate = null;
+    public String pillInputDate;
 
     @ColumnInfo(name = "takeRate")
-    public int takeRate = 0;
+    public int takeRate;
 
     @ColumnInfo(name = "lastUse")
-    public String lastUse = null;
+    public String lastUse;
 
     public int courseLen;
     public String startDay;
     public int pillsPerDay;
+    public int pillsPerTake;
     public int pillsTakenToday;
     public int timeBetweenTakes;
 }

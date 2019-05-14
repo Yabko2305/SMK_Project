@@ -17,6 +17,11 @@ import android.widget.TextView;
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.MyRes.Pill;
+import com.example.smkapk_version1.MyRes.PillDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Medkit_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,13 +44,27 @@ public class Medkit_MainActivity extends AppCompatActivity
         //----------
         instance = this;
         database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
-        final DataDao loadDao = database.dataDao();
+        DataDao loadDao = database.dataDao();
         d = loadDao.getByMail(LogIn_Activity.currentMail);
         //----------
+
+        /*
+        PillDao pillDaoTest = database.pillDao();   //Example
+        Pill pillTest = new Pill();
+        pillTest.pillName = "Name";
+        pillTest.pillCount = 11;
+        pillTest.pillsPerDay = 2;
+        pillDaoTest.insert(pillTest);
+
+
+        List<Pill> toGetSize = pillDaoTest.getAll();
+        Pill getPill = pillDaoTest.getById(toGetSize.size());
+        */
 
         userName = (TextView) findViewById(R.id.NameShowScrollActivity_MedKidMenu);
         userIcon = (ImageView) findViewById(R.id.MedKitMenuUserIcon);
 
+        //userName.setText(getPill.pillName+" "+getPill.pillCount+" "+getPill.pillsPerDay);   //Test
         userName.setText(d.getFName()+" "+d.getSName());
         updatePicture(d.getPicNum());
 
