@@ -36,7 +36,7 @@ public class Pills_Main_Activity extends AppCompatActivity
 
     public static Pills_Main_Activity instance;
     boolean ChangeLayoutIsOpened = false;
-    private DataBase database;
+    private static DataBase database;
     int isSelected = -1;
 
     @Override
@@ -157,7 +157,7 @@ public class Pills_Main_Activity extends AppCompatActivity
         return instance;
     }
 
-    public DataBase getDatabase() {
+    public static DataBase getDatabase() {
         return database;
     }
 }

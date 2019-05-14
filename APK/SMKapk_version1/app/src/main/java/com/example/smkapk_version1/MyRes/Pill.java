@@ -37,7 +37,7 @@ public class Pill {
     public String lastUse;
 
     public int courseLen;
-    public String startDay;
+    public long startDay;
     public int pillsPerDay;
     public int pillsPerTake;
     public int pillsTakenToday;

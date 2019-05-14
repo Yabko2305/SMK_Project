@@ -25,6 +25,9 @@ public interface PillDao {
     @Query("SELECT * FROM Pill WHERE id= :id")
     Pill getById(int id);
 
+    @Query("SELECT * FROM Pill WHERE placeInKit= :position")
+    Pill getByPosition(int position);
+
     @Query("SELECT * FROM Pill WHERE patientMail= :patientMail")
     List<Pill> getByMail(String patientMail);
 }

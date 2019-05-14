@@ -80,6 +80,7 @@ public class Adding_New_Pill extends AppCompatActivity {
                     SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                     p.pillInputDate = df.format(c);
                     p.pillsPerTake = Integer.parseInt(Pills_per_take_AddingPill.getText().toString());
+                    p.startDay = c.getTime();
                     pillDao.insert(p);
                     //==========
 
