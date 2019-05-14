@@ -54,24 +54,11 @@ public class ItemAdapror extends BaseAdapter {
         Pill pill = pills[position];
 
        nameTextView.setText(pill.pillName);
-        Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String one = df.format(c);
-       char[] arr1 = new char[2];
-       arr1[0] = one.charAt(one.length()-2);
-       arr1[1] = one.charAt(one.length()-1);
-       one = arr1.toString();
 
-       String two = pill.startDay;
-       arr1[0] = two.charAt(one.length()-2);
-       arr1[1] = two.charAt(one.length()-1);
-       two = arr1.toString();
-       int oneitn = Integer.parseInt(one);
-       int twoint = Integer.parseInt(two);
-       int res = oneitn -twoint;
+       // Напиши плз код який буде взнавати скільки днів пройшло від початку курсу до сьогодні. І то число нижче запхай перед /
 
-       days_taken.setText(res+"/"+pill.courseLen);
-       today_taken.setText(pill.pillsTakenToday+"/"+pill.takeRate);
+       days_taken.setText("/"+pill.courseLen);
+       today_taken.setText(pill.pillsTakenToday+"/"+pill.pillsPerDay);
 
 
         return v;
