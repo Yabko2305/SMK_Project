@@ -63,7 +63,6 @@ public class ItemAdapror extends BaseAdapter {
         Calendar currentTime = new GregorianCalendar();
 
         inputDate.setTimeInMillis(pill.startDay);
-        inputDate.roll(Calendar.DAY_OF_MONTH, -2);
         int out = currentTime.get(Calendar.DATE) - inputDate.get(Calendar.DATE);
 
         days_taken.setText(out+"/"+pill.courseLen);
