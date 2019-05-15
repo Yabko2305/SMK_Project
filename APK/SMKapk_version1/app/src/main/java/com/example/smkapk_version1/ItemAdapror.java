@@ -58,12 +58,11 @@ public class ItemAdapror extends BaseAdapter {
         nameTextView.setText(pill.pillName);
 
         PillDao pillDao = Pills_Main_Activity.getDatabase().pillDao();
-        Pill p = pillDao.getById(1);    //тре знати якої таблетки дані виводити...)
 
         Calendar inputDate = new GregorianCalendar();
         Calendar currentTime = new GregorianCalendar();
 
-        inputDate.setTimeInMillis(p.startDay);
+        inputDate.setTimeInMillis(pill.startDay);
         inputDate.roll(Calendar.DAY_OF_MONTH, -2);
         int out = currentTime.get(Calendar.DATE) - inputDate.get(Calendar.DATE);
 
