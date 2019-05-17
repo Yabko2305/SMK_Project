@@ -63,14 +63,12 @@ public class Pills_Main_Activity extends AppCompatActivity
 
         //DEMO_USAGE OF SHOWING PILLS
 
+
+
        myListView = (ListView) findViewById(R.id.PillsListView);
         PillDao pillDao = database.pillDao();
-        List<Pill> pills = pillDao.getAll();
-        Pill[] Pillarray = new Pill[pills.size()];   //<---- must use this code
-        pills.toArray(Pillarray);
 
-
-       ItemAdapror adaptor = new ItemAdapror(this , Pillarray);
+       ItemAdapror adaptor = new ItemAdapror(this );
        myListView.setAdapter(adaptor);
 
         //REFACTOR THIS CODE */
