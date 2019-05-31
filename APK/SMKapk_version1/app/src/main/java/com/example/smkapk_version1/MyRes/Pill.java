@@ -34,7 +34,7 @@ public class Pill {
     public int takeRate;
 
     @ColumnInfo(name = "lastUse")
-    public String lastUse;
+    public long lastUse;
 
     public int courseLen;
     public long startDay;

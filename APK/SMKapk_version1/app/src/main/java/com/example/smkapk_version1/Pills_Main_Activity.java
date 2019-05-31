@@ -20,10 +20,7 @@ import android.widget.TextView;
 import com.example.smkapk_version1.MyRes.Data;
 import com.example.smkapk_version1.MyRes.DataBase;
 import com.example.smkapk_version1.MyRes.DataDao;
-import com.example.smkapk_version1.MyRes.Pill;
 import com.example.smkapk_version1.MyRes.PillDao;
-
-import java.util.List;
 
 public class Pills_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +41,8 @@ public class Pills_Main_Activity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pills__main_);
 
+        initLogin();    //Для того щобпрацював перехід зі сповіщення
+
         addPill = (FloatingActionButton) findViewById(R.id.AddPill_FromPillsMenu_Button);
 
         addPill.setOnClickListener(new View.OnClickListener() {
@@ -62,14 +61,11 @@ public class Pills_Main_Activity extends AppCompatActivity
         //----------
 
         //DEMO_USAGE OF SHOWING PILLS
-
-
-
-       myListView = (ListView) findViewById(R.id.PillsListView);
+        myListView = (ListView) findViewById(R.id.PillsListView);
         PillDao pillDao = database.pillDao();
 
-       ItemAdapror adaptor = new ItemAdapror(this );
-       myListView.setAdapter(adaptor);
+        ItemAdapror adaptor = new ItemAdapror(this );
+        myListView.setAdapter(adaptor);
 
         //REFACTOR THIS CODE */
 
@@ -91,6 +87,23 @@ public class Pills_Main_Activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void initLogin() {
+        if(LogIn_Activity.currentMail == null || LogIn_Activity.currentName == null || LogIn_Activity.currentSurname == null){
+            instance = this;
+            database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
+
+            DataDao dataDao = database.dataDao();
+            Data data = dataDao.getByBoolean(true);
+            if(data != null) {
+                if (data.getEMail() != null && data.getPass() != null) {
+                    LogIn_Activity.currentName = data.getFName();
+                    LogIn_Activity.currentSurname = data.getSName();
+                    LogIn_Activity.currentMail = data.getEMail();
+                }
+            }
+        }
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout_pills);
@@ -103,9 +116,6 @@ public class Pills_Main_Activity extends AppCompatActivity
         }
     }
 
-
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

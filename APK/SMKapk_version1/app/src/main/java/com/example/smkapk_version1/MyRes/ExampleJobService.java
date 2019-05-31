@@ -3,11 +3,14 @@ package com.example.smkapk_version1.MyRes;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-
+import com.example.smkapk_version1.LogIn_Activity;
+import com.example.smkapk_version1.Pills_Main_Activity;
 import com.example.smkapk_version1.R;
 
 public class ExampleJobService extends JobService {
@@ -17,7 +20,6 @@ public class ExampleJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         doBackgroundWork(params);
-
         return true;
     }
 
@@ -45,16 +47,21 @@ public class ExampleJobService extends JobService {
             channel.setDescription("Description");
             channel.enableLights(true);
             channel.enableVibration(true);
-            channel.setLockscreenVisibility(1); //May crash
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
 
             notificationManager.createNotificationChannel(channel);
         }
+
+        Intent activityIntent = new Intent(this, Pills_Main_Activity.class);
+        PendingIntent contentintent = PendingIntent.getActivity(this, 0, activityIntent, 0);
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this, CHANEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Title")
-                .setContentText("Some text...");
+                .setContentText("Some text...")
+                .setContentIntent(contentintent)
+                .setAutoCancel(true);
 
         Notification notification = builder.build();
         notificationManager.notify(1, notification);
