@@ -6,12 +6,19 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import com.example.smkapk_version1.LogIn_Activity;
+import com.example.smkapk_version1.Notifications.NotificationsReciever;
 import com.example.smkapk_version1.Pills_Main_Activity;
 import com.example.smkapk_version1.R;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class ExampleJobService extends JobService {
     public static final String TAG = "ExampleJobService";
@@ -38,6 +45,8 @@ public class ExampleJobService extends JobService {
 
     private void createNotification() {
         String CHANEL_ID = "1";
+        String pillsToTake = getPills();
+
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -55,16 +64,40 @@ public class ExampleJobService extends JobService {
         Intent activityIntent = new Intent(this, Pills_Main_Activity.class);
         PendingIntent contentintent = PendingIntent.getActivity(this, 0, activityIntent, 0);
 
+        Intent broadkastIntent = new Intent(this, NotificationsReciever.class);
+        broadkastIntent.putExtra("toastMessage", "Take pill in 15 minutes!");
+        PendingIntent actionIntent = PendingIntent.getBroadcast(this, 0, broadkastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this, CHANEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Title")
-                .setContentText("Some text...")
+                .setContentTitle("Reminder")
+                .setContentText(pillsToTake)
                 .setContentIntent(contentintent)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .addAction(R.mipmap.ic_launcher, "Delay", actionIntent);
 
         Notification notification = builder.build();
         notificationManager.notify(1, notification);
+    }
+    private String getPills(){
+        Calendar time = new GregorianCalendar();
+        time.roll(Calendar.MINUTE, -15);
+        Calendar pillTakeTime = new GregorianCalendar();
+
+        DataBase dataBase = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
+        PillDao pillDao = dataBase.pillDao();
+
+        List<Pill> list = pillDao.getAll();
+        List<String> out = new ArrayList<String>();
+        for(Pill p : list){
+            pillTakeTime.setTimeInMillis(p.lastUse);
+            if(time.after(pillTakeTime)){   //May be changed
+                out.add(p.pillName);
+            }
+        }
+        if (out.size() == 0) return "No pills to take";
+        return out.toString();
     }
 
     @Override
