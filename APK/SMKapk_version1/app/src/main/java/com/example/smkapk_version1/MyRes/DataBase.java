@@ -12,7 +12,7 @@ public abstract class DataBase extends RoomDatabase {
 
     public static volatile DataBase INSTANCE;
 
-    static DataBase getDatabase(final Context context){
+    public static DataBase getDatabase(final Context context){
         if (INSTANCE == null){
             synchronized (DataBase.class){
                 if(INSTANCE == null){

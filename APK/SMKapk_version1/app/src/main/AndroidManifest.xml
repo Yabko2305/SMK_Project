@@ -65,8 +65,10 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".MyRes.ExampleJobService"
+        <service android:name=".Notifications.ExampleJobService"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <receiver android:name=".Notifications.NotificationsReciever"/>
     </application>
 
 </manifest>

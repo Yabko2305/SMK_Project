@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.smkapk_version1.MyRes.ExampleJobService;
+import com.example.smkapk_version1.Notifications.ExampleJobService;
 import com.example.smkapk_version1.R;
 import com.example.smkapk_version1.Settings_activity;
 
