@@ -70,7 +70,7 @@ public class ItemAdapror extends BaseAdapter {
         Calendar currentTime = new GregorianCalendar();
         inputDate.setTimeInMillis(pill.startDay);
 
-        int out = currentTime.get(Calendar.DATE) - inputDate.get(Calendar.DATE);
+        int out = currentTime.get(Calendar.DAY_OF_YEAR) - inputDate.get(Calendar.DAY_OF_YEAR);
         if(out > pill.courseLen) {
             pills.delete(pill);
         }
