@@ -1,8 +1,7 @@
-package com.example.smkapk_version1;
+package com.example.smkapk_version1.AddPill;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.icu.util.GregorianCalendar;
@@ -12,16 +11,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
-import com.example.smkapk_version1.MyRes.Pill;
-import com.example.smkapk_version1.MyRes.PillDao;
+import com.example.smkapk_version1.R;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.Pill;
+import com.example.smkapk_version1.RoomDatabaseRes.PillDao;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class ItemAdapror extends BaseAdapter {
@@ -61,7 +55,7 @@ public class ItemAdapror extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View v = mInflater.inflate(R.layout.details_for_pill , null);
+        View v = mInflater.inflate(R.layout.pills_addmenu_details2, null);
 
         List<Pill> list = pills.getAll();
         Pill pill = list.get(position);
@@ -70,10 +64,11 @@ public class ItemAdapror extends BaseAdapter {
         Calendar currentTime = new GregorianCalendar();
         inputDate.setTimeInMillis(pill.startDay);
 
-        int out = currentTime.get(Calendar.DAY_OF_YEAR) - inputDate.get(Calendar.DAY_OF_YEAR);
-        if(out > pill.courseLen) {
+        // Make crash!   Copypasted to homepage_activity
+        int out = currentTime.get(Calendar.DAY_OF_YEAR) - inputDate.get(Calendar.DAY_OF_YEAR)+1;
+        /*if(out >= pill.courseLen) {
             pills.delete(pill);
-        }
+        }*/
 
         nameTextView = v.findViewById(R.id.PillNameTextView);
         days_taken = v.findViewById(R.id.DaysOfTakePillDetail);

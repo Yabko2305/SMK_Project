@@ -1,13 +1,8 @@
-package com.example.smkapk_version1.MyRes;
+package com.example.smkapk_version1.RoomDatabaseRes;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
-
-import java.sql.Date;
-import java.sql.Time;
-import java.time.MonthDay;
 
 @Entity(tableName = "Pill")
 public class Pill {

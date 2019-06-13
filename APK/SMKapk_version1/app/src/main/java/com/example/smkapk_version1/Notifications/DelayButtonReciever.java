@@ -1,26 +1,22 @@
 package com.example.smkapk_version1.Notifications;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.arch.persistence.room.Room;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.example.smkapk_version1.LogIn_Activity;
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.Pill;
-import com.example.smkapk_version1.MyRes.PillDao;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.Pill;
+import com.example.smkapk_version1.RoomDatabaseRes.PillDao;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class NotificationsReciever extends BroadcastReceiver {
-    public static NotificationsReciever instance;
+public class DelayButtonReciever extends BroadcastReceiver {
+    public static DelayButtonReciever instance;
     private DataBase database;
 
     @Override
@@ -48,7 +44,7 @@ public class NotificationsReciever extends BroadcastReceiver {
         }
     }
 
-    public static NotificationsReciever getInstance() {
+    public static DelayButtonReciever getInstance() {
         return instance;
     }
 

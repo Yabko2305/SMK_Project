@@ -20,6 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_medkit__main" />
+    <include layout="@layout/medkit_menu_content" />
 
 </android.support.design.widget.CoordinatorLayout>

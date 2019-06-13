@@ -12,9 +12,9 @@ import android.widget.ImageView;
 
 
 import com.example.smkapk_version1.LogIn_Activity;
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
 import com.example.smkapk_version1.R;
 import com.example.smkapk_version1.Settings_activity;
 
@@ -34,7 +34,7 @@ public class Change_Email_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change__email_);
+        setContentView(R.layout.settings_change_email);
 
 
         //----------

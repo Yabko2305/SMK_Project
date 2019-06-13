@@ -1,14 +1,18 @@
-package com.example.smkapk_version1;
+package com.example.smkapk_version1.AddPill;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.support.v7.widget.Toolbar;
+
+import com.example.smkapk_version1.AddPill.Adding_New_Pill;
+import com.example.smkapk_version1.AddPill.ItemAdaptor_AddPill;
+import com.example.smkapk_version1.Pills_Main_Activity;
+import com.example.smkapk_version1.R;
 
 public class Add_Pill_Activity extends AppCompatActivity {
     ListView myListView;
@@ -17,7 +21,7 @@ public class Add_Pill_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add__pill_);
+        setContentView(R.layout.pills_menu_content);
 
         Toolbar toolbar = findViewById(R.id.toolbar_addpill);
         setSupportActionBar(toolbar);

@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
 
 public class SignUp_Activity extends AppCompatActivity {
     public static SignUp_Activity instance;
@@ -20,7 +20,7 @@ public class SignUp_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup_activity_layout);
+        setContentView(R.layout.menu_signup);
 
         //----------
         instance = this;

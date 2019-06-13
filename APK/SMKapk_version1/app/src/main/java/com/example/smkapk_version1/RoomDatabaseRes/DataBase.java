@@ -1,4 +1,4 @@
-package com.example.smkapk_version1.MyRes;
+package com.example.smkapk_version1.RoomDatabaseRes;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;

@@ -11,11 +11,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Handler;
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
-import com.example.smkapk_version1.MyRes.Pill;
-import com.example.smkapk_version1.MyRes.PillDao;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
 
 public class LogIn_Activity extends AppCompatActivity implements View.OnTouchListener {
     public static String currentName, currentSurname , currentMail;
@@ -28,7 +26,7 @@ public class LogIn_Activity extends AppCompatActivity implements View.OnTouchLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity_layout);
+        setContentView(R.layout.menu_login);
 
         //----------
         instance = this;

@@ -12,11 +12,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
-import com.example.smkapk_version1.LogIn_Activity;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.Pill;
-import com.example.smkapk_version1.MyRes.PillDao;
-import com.example.smkapk_version1.Notifications.NotificationsReciever;
+
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.Pill;
+import com.example.smkapk_version1.RoomDatabaseRes.PillDao;
 import com.example.smkapk_version1.Pills_Main_Activity;
 import com.example.smkapk_version1.R;
 
@@ -43,7 +42,7 @@ public class ExampleJobService extends JobService {
 
                 createNotification();
 
-                jobFinished(params, false);
+                jobFinished(params, true);  //changed to true
             }
         }).start();
     }
@@ -69,7 +68,7 @@ public class ExampleJobService extends JobService {
         Intent activityIntent = new Intent(this, Pills_Main_Activity.class);
         PendingIntent contentintent = PendingIntent.getActivity(this, 0, activityIntent, 0);
 
-        Intent broadkastIntent = new Intent(this, NotificationsReciever.class);
+        Intent broadkastIntent = new Intent(this, DelayButtonReciever.class);
         broadkastIntent.putExtra("toastMessage", "Take pill in 15 minutes!");
         PendingIntent actionIntent = PendingIntent.getBroadcast(this, 0, broadkastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -86,9 +85,9 @@ public class ExampleJobService extends JobService {
         notificationManager.notify(1, notification);
 
         PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
-        boolean isScreenOn = Build.VERSION.SDK_INT >= 20 ? pm.isInteractive() : pm.isScreenOn();
+        boolean isScreenOn = Build.VERSION.SDK_INT >= 24 ? pm.isInteractive() : pm.isScreenOn();
 
-        if(!isScreenOn){
+        if(!isScreenOn){    //may not work :-(
             PowerManager.WakeLock wl =  pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "myApp:notificationLock");
             wl.acquire(3000);
         }

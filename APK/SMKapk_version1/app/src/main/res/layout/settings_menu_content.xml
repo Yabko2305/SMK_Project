@@ -7,7 +7,7 @@
     android:id = "@+id/mainScrollview"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Settings_activity"
-    tools:showIn="@layout/settings_toolbar_layout">
+    tools:showIn="@layout/settings_menu_toolbar">
 
 
 <android.support.constraint.ConstraintLayout android:layout_height="match_parent"

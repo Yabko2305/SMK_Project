@@ -1,4 +1,4 @@
-package com.example.smkapk_version1;
+package com.example.smkapk_version1.AddPill;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.smkapk_version1.MyRes.Pill;
+import com.example.smkapk_version1.R;
 
 public class ItemAdaptor_AddPill extends BaseAdapter {
     LayoutInflater mInflater;
@@ -36,7 +36,7 @@ public class ItemAdaptor_AddPill extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = mInflater.inflate(R.layout.details_addpill , null);
+        View v = mInflater.inflate(R.layout.pills_addmenu_details, null);
 
         TextView PillName = v.findViewById(R.id.PillName_AddPill);
 

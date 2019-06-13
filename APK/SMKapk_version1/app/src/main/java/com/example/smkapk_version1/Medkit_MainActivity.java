@@ -14,14 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
-import com.example.smkapk_version1.MyRes.Pill;
-import com.example.smkapk_version1.MyRes.PillDao;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
 
 public class Medkit_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,7 +31,7 @@ public class Medkit_MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medkit__main);
+        setContentView(R.layout.medkit_menu_activity);
         Toolbar toolbar = findViewById(R.id.toolbar_medkit);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

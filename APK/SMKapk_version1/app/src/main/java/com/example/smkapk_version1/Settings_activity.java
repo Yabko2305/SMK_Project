@@ -19,9 +19,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
 import com.example.smkapk_version1.Settings.Change_Email_Activity;
 import com.example.smkapk_version1.Settings.Change_Name_Activity;
 import com.example.smkapk_version1.Settings.Change_Password_Activity;
@@ -51,7 +51,7 @@ public class Settings_activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings_activity);
+        setContentView(R.layout.settings_menu_activity);
 
         applyImageChange = (TextView) findViewById(R.id.ApplyChangeImage);
         cancelImageChange = (TextView) findViewById(R.id.CancelChangeImage);

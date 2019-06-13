@@ -16,11 +16,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
-import com.example.smkapk_version1.MyRes.PillDao;
+import com.example.smkapk_version1.AddPill.Add_Pill_Activity;
+import com.example.smkapk_version1.AddPill.ItemAdapror;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
+import com.example.smkapk_version1.RoomDatabaseRes.PillDao;
 
 public class Pills_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,7 +42,7 @@ public class Pills_Main_Activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pills__main_);
+        setContentView(R.layout.pills_menu_activity);
 
         initLogin();    //Для того щобпрацював перехід зі сповіщення
 
@@ -85,6 +88,11 @@ public class Pills_Main_Activity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void ToastIfWork(View v){
+        String message = "This pill ";
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void initLogin() {

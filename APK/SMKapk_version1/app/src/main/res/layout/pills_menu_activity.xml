@@ -2,24 +2,24 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout_medkit"
+    android:id="@+id/drawer_layout_pills"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
     <include
-        layout="@layout/medkit_toolbar_layout"
+        layout="@layout/pills_menu_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view_medkit"
+        android:id="@+id/nav_view_pills"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/slideout_background_layout"
+        app:headerLayout="@layout/slideout_background"
         app:menu="@menu/slide_buttons_menu" >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         >
 
         <TextView
-            android:id="@+id/NameShowScrollActivity_MedKidMenu"
+            android:id="@+id/NameShowScrollActivity_PillMenu"
             android:layout_width="216dp"
             android:layout_height="34dp"
             android:layout_marginTop="140dp"
@@ -41,16 +41,18 @@
             android:textSize="16dp" />
 
         <ImageView
-            android:id="@+id/MedKitMenuUserIcon"
+            android:id="@+id/PillMenuUserIcon"
             android:layout_width="112dp"
             android:layout_height="89dp"
 
-            android:layout_below="@+id/NameShowScrollActivity_MedKidMenu"
-            android:layout_alignEnd="@+id/NameShowScrollActivity_MedKidMenu"
+            android:layout_below="@+id/NameShowScrollActivity_PillMenu"
+            android:layout_alignEnd="@+id/NameShowScrollActivity_PillMenu"
             android:layout_marginTop="-139dp"
             android:layout_marginEnd="118dp"
             app:srcCompat="@drawable/usericon" />
     </RelativeLayout>
     </android.support.design.widget.NavigationView>
+
+
 
 </android.support.v4.widget.DrawerLayout>

@@ -12,7 +12,7 @@ public class Security_Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_security__settings);
+        setContentView(R.layout.settings_change_security);
     }
 
     @Override

@@ -4,31 +4,31 @@ import android.app.DatePickerDialog;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.util.Calendar;
+import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.smkapk_version1.MyRes.Data;
-import com.example.smkapk_version1.MyRes.DataBase;
-import com.example.smkapk_version1.MyRes.DataDao;
+import com.example.smkapk_version1.RoomDatabaseRes.Data;
+import com.example.smkapk_version1.RoomDatabaseRes.DataBase;
+import com.example.smkapk_version1.RoomDatabaseRes.DataDao;
+import com.example.smkapk_version1.RoomDatabaseRes.Pill;
+import com.example.smkapk_version1.RoomDatabaseRes.PillDao;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class HomePage_Activity extends AppCompatActivity
@@ -45,13 +45,15 @@ public class HomePage_Activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_layout_of_slideout_menu);
+        setContentView(R.layout.homepage_activity);
 
         //----------
         instance = this;
         database = Room.databaseBuilder(this, DataBase.class, "Data").allowMainThreadQueries().build();
         DataDao loadDao = database.dataDao();
         Data d = loadDao.getByMail(LogIn_Activity.currentMail);
+
+        checkForExpiredCourses(database.pillDao());
         //----------
 
         userIcon = (ImageView) findViewById(R.id.MainUserIcon);
@@ -131,6 +133,21 @@ public class HomePage_Activity extends AppCompatActivity
         LineData lineData = new LineData(dataSet);
         chart.setData(lineData);
         chart.invalidate();
+    }
+
+    private void checkForExpiredCourses(PillDao pillDao) {
+        List<Pill> list = pillDao.getAll();
+
+        for(Pill p : list){
+            Calendar inputDate = new GregorianCalendar();
+            Calendar currentTime = new GregorianCalendar();
+            inputDate.setTimeInMillis(p.startDay);
+
+            int out = currentTime.get(Calendar.DAY_OF_YEAR) - inputDate.get(Calendar.DAY_OF_YEAR) + 1;
+            if(out > p.courseLen) {
+                pillDao.delete(p);
+            }
+        }
     }
 
     @Override

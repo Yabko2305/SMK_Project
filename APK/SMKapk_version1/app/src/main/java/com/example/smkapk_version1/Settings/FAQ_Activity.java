@@ -12,7 +12,7 @@ public class FAQ_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_faq_);
+        setContentView(R.layout.settings_change_faq);
     }
 
     @Override
